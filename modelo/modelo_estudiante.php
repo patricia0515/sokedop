@@ -31,8 +31,8 @@
    }
 
 
-   //Los métodos set colocan datos en
-   //los atributos de las clases     
+   /* Los métodos set colocan datos en
+   los atributos de las clases    */  
    public function setNo_documento($no_documento)
    {
       $this->no_documento = $no_documento;  
