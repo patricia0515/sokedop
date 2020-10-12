@@ -22,19 +22,12 @@ $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : null;
 if(isset($_FILES['foto']) ? $_FILES['foto']: null){
     $nombre_archivo = $_FILES['foto']['name'];
     $tipo_archivo = $_FILES['foto']['type'];
-    $tamano_archivo = $_FILES['foto']['size'];
-    
+	$tamano_archivo = $_FILES['foto']['size'];
+	$foto = $nombre_archivo;    
     $directorio = '../../imagenes/estudiantes/';
     $directorio = $directorio.basename($_FILES['foto']['name']);
 }
 
-
-
-
-//$foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
-/*$ruta = $_FILES['foto']['tmp_name'];
-$destino ="../../imagenes/estudiantes/".$foto;
-copy($ruta,$destino);*/
 
 //Este array guardará los errores de validación que surjan.
 $errores= array();
