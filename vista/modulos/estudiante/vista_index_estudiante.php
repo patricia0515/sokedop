@@ -3,6 +3,21 @@
   <?php
   	require_once("../../partials/head.php");
   ?>
+  <!-- libreria JS de jQuery, debe tener internet para que se accione -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- JavaScript compilado más reciente, del framework bootstrap versión 3.3.7 -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+        function preguntar(valor)
+        {
+            if (confirm('¿Desea eliminar el regristro?, con el número de documento '+valor))
+            {
+                window.location.href="vista_index_estudiante.php?resp="+valor;
+            }
+        }
+    </script>
+  
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
@@ -87,13 +102,14 @@
                                             {  
                                                 echo  "No hay registros";
                                             }
-                                            
+                                            require_once("../../../modelo/modelo_estudiante.php");
                                             if (isset($_GET['resp']))
                                             {
-                                               if($est->borrar('estudiante',$_GET['resp']))
+                                               if($est->borrar($_GET['resp']))
                                                {
                                                    //echo "Registro eliminado, fisicamente";
-												   header("location: vista_index_estudiante.php"); 
+                                                header("location: vista_index_estudiante.php"); 
+                                            
                                                }
                                                else
                                                {

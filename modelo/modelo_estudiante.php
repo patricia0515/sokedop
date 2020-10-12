@@ -259,6 +259,7 @@
       from estudiante as e
       inner join categoria as c
       on e.categoria=c.id_categoria
+      where estado='Activo'
       order by Nombre asc";  
 	  }
 	  else{
@@ -331,9 +332,9 @@
            return false;
        }   
    }
-   public function borrar($tabla,$condicion)
+   public function borrar($condicion)
    {
-      $sql="delete from ".$tabla." where no_documento =".$condicion;
+      $sql="update estudiante set estado='Inactivo' where no_documento =".$condicion;
       $resultado=$this->conec->query($sql);
       if ($resultado)
        {

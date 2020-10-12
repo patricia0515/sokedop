@@ -29,11 +29,6 @@
                       <div class="col-md-12">
                               <!--Contenido OJO AQUI INICIA MI VISTA-->
                              <h3>Bienvenido, seleccione una opción del Menú</h3>
-                             
-                             <form enctype="multipart/form-data" action="upload.php" method="POST">
-                                <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-                               <p> Enviar mi archivo: <input name="subir_archivo" type="file" /></p>
-                               <p> <input type="submit" value="Enviar Archivo" /></p>
                             </form>
                             
                              <img src="img/6.jpg" height="420px" width="1070px">

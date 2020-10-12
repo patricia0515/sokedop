@@ -100,7 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
         else
         {
-          echo "Registro, no se puede adicionar";
+		  echo "Registro, no se puede adicionar";
+		  
         }
     }    
 }
@@ -357,7 +358,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								echo $barrio."<br>";
 								echo $celular."<br>";
 								echo $email."<br>";
-								echo $nombre_archivo."<br>";
 								echo $nombre_acudiente."<br>";
 								echo $apellidos_acudiente."<br>";
 								echo $tel_acudiente."<br>";
