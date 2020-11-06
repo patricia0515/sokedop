@@ -18,7 +18,7 @@
        <div class="wrapper">
 
       <?php
-		require_once("../../partials/header.php");		
+		    require_once("../../partials/header.php");		
       	require_once("../../partials/menu.php");
       ?>
        <!--Contenido-->
