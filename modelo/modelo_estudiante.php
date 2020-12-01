@@ -336,7 +336,23 @@
    public function actualizar($tabla,$campos)
    {
       //UPDATE usuario SET Tipo_usuario ='Docente' WHERE doc_usuario = '404444456';
-       $sql="UPDATE ".$tabla." SET clave_usuario = '".$this->getClave_usuario()."', mail_usuario = '".$this->getMail_usuario()."', Tipo_usuario = '".$this->getTipo_usuario()."' WHERE doc_usuario = '".$this->getDoc_usuario()."'";
+       $sql="UPDATE ".$tabla." SET
+        tipo_documento      = '".$this->getTipo_documento()."',
+        nombres             = '".$this->getNombres()."',
+        apellidos           = '".$this->getApellidos()."',
+        direccion           = '".$this->getDireccion()."',
+        barrio              = '".$this->getBarrio()."',
+        celular             = '".$this->getCelular()."',
+        email               = '".$this->getEmail()."',
+        foto                = '".$this->getFoto()."',
+        nombre_acudiente    = '".$this->getNombre_acudiente()."',
+        apellidos_acudiente = '".$this->getApellidos_acudiente()."',
+        tel_acudiente       = '".$this->getTel_acudiente()."',
+        email_acudiente     = '".$this->getEmail_acudiente()."',
+        parentesco_acu      = '".$this->getParentesco_acu()."',
+        funcionario         = '".$this->getFuncionario()."',
+        categoria           = '".$this->getCategoria()."'
+        WHERE no_documento  = '".$this->getNo_documento()."'";
        
 	   $resultado=$this->conec->query($sql);
 	   

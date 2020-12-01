@@ -146,8 +146,8 @@
    {
       //UPDATE usuario SET Tipo_usuario ='Docente' WHERE doc_usuario = '404444456';
        $sql="UPDATE ".$tabla." SET 
-	   nombre = '".$this->getNombre()."', 
-	   descripcion = '".$this->getDescripcion()."' 
+	   nombre             = '".$this->getNombre()."', 
+	   descripcion        = '".$this->getDescripcion()."' 
 	   WHERE id_categoria = '".$this->getId_categoria()."'";
 	   
        $resultado=$this->conec->query($sql);

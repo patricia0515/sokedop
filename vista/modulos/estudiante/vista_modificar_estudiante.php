@@ -30,9 +30,11 @@ if(isset($_FILES['foto']) ? $_FILES['foto']: null){
     $nombre_archivo = $_FILES['foto']['name'];
     $tipo_archivo = $_FILES['foto']['type'];
     $tamano_archivo = $_FILES['foto']['size'];
-    
+    $foto = $nombre_archivo;
     $directorio = '../../imagenes/estudiantes/';
     $directorio = $directorio.basename($_FILES['foto']['name']);
+}else{
+	$foto = $foto1;
 }
 //$foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 /*$ruta = $_FILES['foto']['tmp_name'];
@@ -74,7 +76,8 @@ copy($ruta,$destino);*/
    	}else{
       		$errores[] =  "Ocurrió algún error al subir el fichero. No pudo guardarse.";
    	}
-    }
+	}
+	
     //Verifica si se han encontrado errores y de no haber, se implementa la lógica del programa.    
     if(!$errores)
     {
@@ -132,7 +135,8 @@ else
 		$parentesco_acu = $v['parentesco_acu'];
 		$funcionario = $v['funcionario'];
 		$categoria = $v['categoria'];
-        $foto = $v['foto'];
+		$foto1 = $v['foto'];
+		$nombre_archivo = $v['foto'];
       }
     }   
 }
@@ -168,8 +172,10 @@ else
                       <div class="col-md-12">
                               <!--Contenido OJO AQUI INICIA MI VISTA--> 
                            <div class="row">
-						   <?php $directorio = '../../imagenes/estudiantes/'; ?>   
+						   <?php $directorio = '../../imagenes/estudiantes/'; ?>
+							<?php if($foto1 != '') {?>
                                   <img src="<?php echo $directorio.$v['foto']; ?>" alt="<?php echo $v['foto']; ?>" height="100px" width="140px"  class="img-responsive center-block">
+							<?php } ?>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                   <h3>Modificar Estudiante:  <?php if(isset($no_documento1)) echo $no_documento1?></h3>
                                 <?php 
@@ -281,7 +287,7 @@ else
 												$cat = new categoria();
 												if ($resultado=$cat->buscar('categoria',"condicion = '1' "))
 												{
-												  var_dump($resultado);
+												//   var_dump($resultado);
 													foreach ($resultado as $valor)
 												  {
 											?>
@@ -309,7 +315,7 @@ else
 													foreach ($resultado as $vlr)
 												  {
 											?>
-												  <option <?php if ($funcionario == $vlr['ID']){echo 'selected';} ?> value = "<?php echo  $valor['ID'];?>" ><?php echo $vlr['Nombre']." ".$vlr['Apellido'];?></option>
+												  <option <?php if ($funcionario == $vlr['ID']){echo 'selected';} ?> value = "<?php echo  $vlr['ID'];?>" ><?php echo $vlr['Nombre']." ".$vlr['Apellido'];?></option>
 												<?php												   
 												   }
 												}
@@ -366,7 +372,11 @@ else
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="form-group">
 										<label for="foto">Foto Documento</label>
-										<input type="file" name="foto" value="<?php if(isset($foto)) echo $foto?>" accept="image/*" class="form-control"> 
+										<input type="file" name="foto" value="<?php if(isset($foto1)) echo $foto1?>" accept="image/*" class="form-control"> 
+										<?php $directorio = '../../imagenes/estudiantes/'; ?>
+							<?php if($foto1 != '') {?>
+								<img src="<?php echo $directorio.$v['foto']; ?>" alt="<?php echo $v['foto']; ?>" height="100px" width="140px"  class="img-responsive center-block">
+							<?php } ?>
 									</div>
 								  </div>
 
@@ -374,7 +384,7 @@ else
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									  <div class="form-group">
 										 <button class="btn btn-primary" type="submit">Guardar</button>
-										 <button class="btn btn-danger" type="reset">Cancelar</button>
+										 <button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
 									  </div>
 								  </div>
                          			                          			
@@ -391,7 +401,7 @@ else
 								echo $barrio."<br>";
 								echo $celular."<br>";
 								echo $email."<br>";
-								// echo $nombre_archivo."<br>";
+								echo $nombre_archivo."<br>";
 								echo $nombre_acudiente."<br>";
 								echo $apellidos_acudiente."<br>";
 								echo $tel_acudiente."<br>";
@@ -399,7 +409,7 @@ else
 								echo $parentesco_acu."<br>";
 								echo $categoria."<br>";
 								echo $funcionario."<br>";
-								echo $foto."<br>";
+								echo $foto1."<br>";
                              
                              ?>
                               <!--Fin Contenido OJO AQUI TERMINA MI VISTA-->
