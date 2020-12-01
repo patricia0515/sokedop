@@ -88,7 +88,7 @@
                                            <td> <?php echo $valor['Estado'];?> </td> 
                                            <td>
                                              <?php 
-                                              echo "<a href='vista_modificar_estudiante.php?doc= ".$valor['Documento']."'class='btn btn-primary'>Modificar</a>";
+                                              echo "<a href='vista_modificar_estudiante.php?doc= ".$valor['Documento']."'class='btn btn-info'>Modificar</a>";
                                               echo "<a href='#' onclick='preguntar(".$valor['Documento'].")' class='btn btn-danger'> Borrar </a>";
                                            ?>
                                          </td>

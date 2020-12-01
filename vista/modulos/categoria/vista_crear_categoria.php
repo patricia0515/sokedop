@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 										</div>
 										<div class="form-group">
 											<button class="btn btn-primary" type="submit">Guardar</button>
-											<button class="btn btn-danger" type="reset">Cancelar</button>
+											<button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
 										</div>
 								  </form>
 

@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <?php
   	require_once("../../partials/head.php");
   ?>
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     <div class="wrapper">
 
       <?php
-		require_once("../../partials/header.php");		
+		    require_once("../../partials/header.php");		
       	require_once("../../partials/menu.php");
       ?>
 

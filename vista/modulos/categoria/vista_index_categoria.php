@@ -44,10 +44,12 @@
                                     <div class="table-responsive">
                                       <table class="table table-striped table-bordered table-condensed table-hover">
                                         <thead><!--Esta es la cabecera de la tabla con los campos titulos -->
-                                          <th>Id</th>
-                                          <th>Nombre</th>
-                                          <th>Descripción</th>
-                                          <th>Opciones</th>
+                                          <tr>
+                                            <th>Id</th>
+                                            <th>Nombre</th>
+                                            <th>Descripción</th>
+                                            <th>Opciones</th>
+                                          </tr>
                                         </thead>
                                         <!--Este bucle va recorrear todas las categorias y las va a almacenar en la variable $cap de manera independiente y se ira mostrando en las filas-->
                                         <?php
@@ -63,13 +65,11 @@
                                          <tr>
                                            <td> <?php echo $valor['id_categoria'];?> </td>
                                            <td> <?php echo $valor['nombre'];?> </td>
-                                           <td> <?php echo $valor['descripcion'];?> </td>
-                                           <td>
-                                            
-                                             <?php 
-                                              
+                                           <td> <?php echo $valor['descripcion'];?> </td>                                            
+                                            <td>
+                                             <?php                                               
                                               //Esta es la manera de enviar un dato a un archivo php Ejemplo:vista_modificar_usuario.php?doc= ".$valor['doc_usuario']
-                                              echo "<a href='vista_modificar_categoria.php?id= ".$valor['id_categoria']."'class='btn btn-primary'>Modificar</a>";
+                                              echo "<a href='vista_modificar_categoria.php?id= ".$valor['id_categoria']."'class='btn btn-info'>Modificar</a>";
                                               echo "<a href='#' onclick='preguntar(".$valor['id_categoria'].")' class='btn btn-danger'> Borrar</a>";
                                            ?>
                                            </td>

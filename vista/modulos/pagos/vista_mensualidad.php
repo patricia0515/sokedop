@@ -56,8 +56,8 @@
 			<th>Fecha</th>
 			<th>Mes</th>
 			<th>Estudiante</th>
-            <th>Funcionario</th>
-            <th>Acciones</th>
+      <th>Funcionario</th>
+      <th>Acciones</th>
 		</tr>
 		</thead>
 <?php
@@ -77,7 +77,7 @@
               <td> <?php echo $valor['funcionario'];?></td>
             <?php
                //Esta es la manera de enviar un dato a un archivo php Ejemplo:vista_modificar_usuario.php?doc= ".$valor['doc_usuario']
-               echo "<td><a href='vista_modificar_mensualidad.php?id= ".$valor['id_mensualidad']."'class='btn btn-primary'>Modificar</a>";
+               echo "<td><a href='vista_modificar_mensualidad.php?id= ".$valor['id_mensualidad']."'class='btn btn-info'>Modificar</a>";
                echo "<td><a href='#' onclick='preguntar(".$valor['id_mensualidad'].")' class='btn btn-danger'> Borrar</a> </td>";
             ?> 
           </tr>
