@@ -1,8 +1,15 @@
 <?php
+
 //Importamos los archivos de funciones y la clase a manipular de la capa modelo.
 require_once("../../../controlador/Controlador_Funciones.php");
 require_once("../../../modelo/modelo_estudiante.php");
 //Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
+
+//Este array guardará los errores de validación que surjan.
+$errores= array();
+//Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
 $no_documento = isset($_POST['no_documento']) ? $_POST['no_documento'] : null;
 $tipo_documento = isset($_POST['tipo_documento']) ? $_POST['tipo_documento'] : null;
 $nombres = isset($_POST['nombres']) ? $_POST['nombres'] : null;
@@ -27,20 +34,10 @@ if(isset($_FILES['foto']) ? $_FILES['foto']: null){
     $directorio = '../../imagenes/estudiantes/';
     $directorio = $directorio.basename($_FILES['foto']['name']);
 }
-
-
-
-
 //$foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 /*$ruta = $_FILES['foto']['tmp_name'];
 $destino ="../../imagenes/estudiantes/".$foto;
 copy($ruta,$destino);*/
-
-//Este array guardará los errores de validación que surjan.
-$errores= array();
-//Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
     
     //Valida que el campo documento usuario, no esté vacío.
    if (!validaRequerido($no_documento)) 
@@ -101,15 +98,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $est->setFoto($foto);
         
 		
-        if ($est->insertar("estudiante",null))
+        if ($est->actualizar("estudiante",null))
         {
           header("location: vista_index_estudiante.php");  
         }
         else
         {
-          echo "Registro, no se puede adicionar";
+          echo "Registro, no se puede actualizar";
         }
     }    
+}
+else
+{
+    $no_documento = isset($_REQUEST['doc']) ? $_REQUEST['doc']:null;
+    $est = new estudiante();
+    if ($resultado=$est->editar("estudiante",$no_documento))
+    {
+      foreach ($resultado as $v)
+      {
+		  
+        $no_documento1 = $v['no_documento'];
+		$tipo_documento = $v['tipo_documento'];
+		$nombres = $v['nombres'];
+		$apellidos = $v['apellidos'];
+		$direccion = $v['direccion'];
+		$barrio = $v['barrio'];
+		$celular = $v['celular'];
+		$email = $v['email'];
+		$nombre_acudiente = $v['nombre_acudiente'];
+		$apellidos_acudiente = $v['apellidos_acudiente'];
+		$tel_acudiente = $v['tel_acudiente'];
+		$email_acudiente = $v['email_acudiente'];
+		$parentesco_acu = $v['parentesco_acu'];
+		$funcionario = $v['funcionario'];
+		$categoria = $v['categoria'];
+        $foto = $v['foto'];
+      }
+    }   
 }
 ?>
 <!DOCTYPE html>
@@ -143,8 +168,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                       <div class="col-md-12">
                               <!--Contenido OJO AQUI INICIA MI VISTA--> 
                            <div class="row">
+						   <?php $directorio = '../../imagenes/estudiantes/'; ?>   
+                                  <img src="<?php echo $directorio.$v['foto']; ?>" alt="<?php echo $v['foto']; ?>" height="100px" width="140px"  class="img-responsive center-block">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <h3>Nuevo Estudiante</h3>
+                                  <h3>Modificar Estudiante:  <?php if(isset($no_documento1)) echo $no_documento1?></h3>
                                 <?php 
                                    if ($errores)
                                   {
@@ -191,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="from group">
 									  <label>No. Documento</label>
-									  <input type="text" name="no_documento" required value="<?php if(isset($no_documento)) echo $no_documento?>" class="form-control" placeholder="Número de documento...">
+									  <input type="text" name="no_documento" required value="<?php if(isset($no_documento1)) echo $no_documento1?>" class="form-control" placeholder="Número de documento..." readonly>
 									</div>
 								  </div>
                          			
@@ -247,18 +274,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="from group">
 									  <label>Categoría</label>
-									  <select name="categoria" class="form-control" data-live-search="true">
+									  <select name="categoria" class="form-control" data-live-search="true" placeholder="Tipo de documento" value="<?php if(isset($categoria)) echo $categoria?>">
 										<option disabled selected>Seleccione una Categoría</option>
 										  <?php
 												require_once("../../../modelo/modelo_categoria.php");
 												$cat = new categoria();
 												if ($resultado=$cat->buscar('categoria',"condicion = '1' "))
 												{
-												  //var_dump($resultado);
+												  var_dump($resultado);
 													foreach ($resultado as $valor)
 												  {
 											?>
-												  <option value = "<?php echo  $valor['id_categoria'];?>" ><?php echo $valor['nombre'];?></option>
+												  <option <?php if ($categoria == $valor['id_categoria']){echo 'selected';} ?> value = "<?php echo  $valor['id_categoria'];?>" ><?php echo $valor['nombre'];?></option>
 												<?php												   
 												   }
 												}
@@ -279,10 +306,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 												if ($resultado=$fun->buscar('funcionario', null))
 												{
 												  //var_dump($resultado);
-													foreach ($resultado as $valor)
+													foreach ($resultado as $vlr)
 												  {
 											?>
-												  <option value = "<?php echo  $valor['ID'];?>" ><?php echo $valor['Nombre']." ".$valor['Apellido'];?></option>
+												  <option <?php if ($funcionario == $vlr['ID']){echo 'selected';} ?> value = "<?php echo  $valor['ID'];?>" ><?php echo $vlr['Nombre']." ".$vlr['Apellido'];?></option>
 												<?php												   
 												   }
 												}
@@ -338,9 +365,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								  <!--16.Aqui metemos una columna -->
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="form-group">
-										<label for="foto">Foto Tipo Documento</label>
-										<input type="file" name="foto" accept="image/*" class="form-control">        
-									  </div>
+										<label for="foto">Foto Documento</label>
+										<input type="file" name="foto" value="<?php if(isset($foto)) echo $foto?>" accept="image/*" class="form-control"> 
+									</div>
 								  </div>
 
 								  <!--17.Aqui metemos una columna, ponemos los botones para la CRUD -->
@@ -364,13 +391,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								echo $barrio."<br>";
 								echo $celular."<br>";
 								echo $email."<br>";
-								echo $nombre_archivo."<br>";
+								// echo $nombre_archivo."<br>";
 								echo $nombre_acudiente."<br>";
 								echo $apellidos_acudiente."<br>";
 								echo $tel_acudiente."<br>";
 								echo $email_acudiente."<br>";
 								echo $parentesco_acu."<br>";
 								echo $categoria."<br>";
+								echo $funcionario."<br>";
+								echo $foto."<br>";
                              
                              ?>
                               <!--Fin Contenido OJO AQUI TERMINA MI VISTA-->

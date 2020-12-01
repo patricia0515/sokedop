@@ -17,7 +17,7 @@ require_once("../modelo/modelo_usuario.php");
         {
           echo "Registro, no se puede actualizar";
         }
-    }   
+      
         /*else
         {
           //echo "Registro, no se puede adicionar, porque ya existe un registro con el documento digitado";

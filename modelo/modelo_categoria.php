@@ -120,7 +120,8 @@
           return false;
       }
    }
-	 
+     /* Esta funcion editar trae el rsgistro que queremos 
+     modificar y lo envia para visializarlo en el formulario*/
 	 public function editar($tabla,$condicion)
    {
       

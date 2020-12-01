@@ -81,16 +81,14 @@
                                            <td> <?php echo $valor['Nombre']." ".$valor['Apellido'];?> </td>
                                            <td> <?php echo $valor['Categoria'];?> </td>
                                            <td>
-                                           		<?php $directorio = '../../imagenes/estudiantes/'; ?> 
-                                                  
-                                               <img src="<?php echo $directorio.$valor['Foto']; ?>" alt="<?php echo $valor['Foto']; ?>" height="50px" width="70px"  class="img-responsive center-block">
-                                          		
-					 					   </td>
+                                           		<?php $directorio = '../../imagenes/estudiantes/'; ?>   
+                                               <img src="<?php echo $directorio.$valor['Foto']; ?>" alt="<?php echo $valor['Foto']; ?>" height="50px" width="70px"  class="img-responsive center-block">	
+					 					                       </td>
                                            
                                            <td> <?php echo $valor['Estado'];?> </td> 
                                            <td>
                                              <?php 
-                                              echo "<a href='vista_modificar_estudiante.php?doc= ".$valor['Documento']."'><button class='btn btn-info'>Editar</button></a>";
+                                              echo "<a href='vista_modificar_estudiante.php?doc= ".$valor['Documento']."'class='btn btn-primary'>Modificar</a>";
                                               echo "<td><a href='#' onclick='preguntar(".$valor['Documento'].")' class='btn btn-danger'> Borrar </a></td>";
                                            ?>
                                          </td>

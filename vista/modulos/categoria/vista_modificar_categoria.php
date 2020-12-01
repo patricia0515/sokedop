@@ -1,9 +1,10 @@
 <?php
+
 //Importamos los archivos de funciones y la clase a manipular de la capa modelo.
 require_once("../../../controlador/Controlador_Funciones.php");
 require_once("../../../modelo/modelo_categoria.php");
-//Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
 
+//Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
 
 //Este array guardará los errores de validación que surjan.
 $errores= array();

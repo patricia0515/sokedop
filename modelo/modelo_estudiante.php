@@ -314,6 +314,23 @@
           return false;
       }
    }
+
+   /* Esta funcion editar trae el rsgistro que queremos 
+     modificar y lo envia para visualizarlo en el formulario*/
+	 public function editar($tabla,$condicion)
+     {
+        $sql="Select * from ".$tabla." where no_documento = ".$condicion;
+        $resultado=$this->conec->query($sql);
+        if($resultado)
+        {
+            $row_cnt = $resultado->num_rows;
+            return $resultado->fetch_all(MYSQLI_ASSOC);
+        }
+        else
+        {     
+            return false;
+        }
+     }
 	 
 	 
    public function actualizar($tabla,$campos)
