@@ -88,7 +88,15 @@
    {
 	  if ($busqueda==null)
 	  {
-		$sql="select f.id_funcionario as ID, u.doc_usuario as Documento, f.nombres as Nombre , f.apellidos as Apellido, u.clave_usuario as Clave, u.mail_usuario as Mail, u.tipo_usuario as Cargo,f.estado as Estado
+        $sql="select 
+        f.id_funcionario as ID, 
+        u.doc_usuario as Documento, 
+        f.nombres as Nombre , 
+        f.apellidos as Apellido, 
+        u.clave_usuario as Clave, 
+        u.mail_usuario as Mail, 
+        u.tipo_usuario as Cargo,
+        f.estado as Estado
 		from usuario as u
 		inner join funcionario as f
 		on u.doc_usuario=f.usuario
@@ -97,11 +105,21 @@
 		   
 	  }
 	  else{
-			$sql= "select f.id_funcionario as ID, u.doc_usuario as Documento, f.nombres as Nombre , f.apellidos as Apellido, u.clave_usuario as Clave, u.mail_usuario as Mail, u.tipo_usuario as Cargo,f.estado as Estado
+            $sql= "select 
+            f.id_funcionario as ID, 
+            u.doc_usuario as Documento, 
+            f.nombres as Nombre, 
+            f.apellidos as Apellido, 
+            u.clave_usuario as Clave, 
+            u.mail_usuario as Mail, 
+            u.tipo_usuario as Cargo,
+            f.estado as Estado
 			from usuario as u
 			inner join funcionario as f
 			on u.doc_usuario=f.usuario
-			where f.nombres like '%".$busqueda."%' or f.apellidos like '%".$busqueda."%' or u.no_documento like '%".$busqueda."%'
+            where f.nombres like '%".$busqueda."%' 
+            or f.apellidos like '%".$busqueda."%' 
+            or u.no_documento like '%".$busqueda."%'
 			order by f.id_funcionario desc"; 
 			
 	  	  }
@@ -136,9 +154,6 @@
        }
    }
 
-
-
-
    public function buscar($tabla,$condicion)
    {
       if ($condicion==null)
@@ -169,10 +184,7 @@
 	   public function editar($tabla,$condicion)
    {
       
-         $sql="Select * from ".$tabla." where doc_usuario = ".$condicion; 
-		 
-      
-       
+      $sql="Select * from ".$tabla." where doc_usuario = ".$condicion;       
       $resultado=$this->conec->query($sql);
       if($resultado)
       {

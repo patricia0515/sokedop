@@ -20,9 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	$nombres = isset($_POST['nombres']) ? $_POST['nombres'] : null;
 	$apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : null;
 	$celular = isset($_POST['celular']) ? $_POST['celular'] : null;
-	$direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
-	$usuario = isset($_POST['doc_usuario']) ? $_POST['doc_usuario'] : null;
-	$id_funcionario = isset($_REQUEST['id']) ? $_REQUEST['id']:null;
+  $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
+  $usuario = $doc_usuario;
+	// $usuario = isset($_POST['doc_usuario']) ? $_POST['doc_usuario'] : null;
+	$id_funcionario = isset($_POST['id_funcionario']) ? $_POST['id_funcionario']:null;
 	
    //Valida que el campo documento usuario, no esté vacío.
    if (!validaRequerido($doc_usuario)) {
@@ -72,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $us->setClave_usuario($clave_usuario);
                 $us->setMail_usuario($email_usuario);
                 $us->setTipo_usuario($tipo_usuario);
+                $us->actualizar("usuario",null);
 
                 $fun=new funcionario();
                 $fun->setTipo_documento($tipo_documento);
@@ -81,6 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $fun->setDireccion($direccion);
                 $fun->setUsuario($doc_usuario);
                 $fun->setId_funcionario($id_funcionario);
+                $fun->actualizar("funcionario",null);
+
                 header("location: vista_index_usuario.php");
         }catch(Exception $e)
             {
@@ -89,10 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $fun->rollBack();
             }
         
-        }else{
+        }
+      }
+        else{
             $doc_usuario = isset($_REQUEST['doc']) ? $_REQUEST['doc']:null;
             $us = new usuario();
-            if ($resultado=$us->editar('usuario',$doc_usuario))
+            if ($resultado=$us->editar("usuario",$doc_usuario))
             {
               foreach ($resultado as $v)
               {
@@ -101,11 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $email_usuario = $v['mail_usuario'];
                 $tipo_usuario = $v['tipo_usuario'];        
               }
+            }
 
                 $id_funcionario = isset($_REQUEST['id']) ? $_REQUEST['id']:null;
-
                 $fun = new funcionario();
-                if ($resultado=$fun->editar('funcionario',$id_funcionario))
+                if ($resultado=$fun->editar("funcionario",$id_funcionario))
                 {
                   foreach ($resultado as $v)
                   {
@@ -116,12 +122,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     $celular = $v['celular'];
                     $direccion = $v['direccion'];
                   }
-                }else
+                
+                /* else
                 {
                     echo "Tenemos un error con la función editar funcionario cuando va a hacer la consulta en la base de datos del id que pide el cambio";
-                }		
-            }
-        }
+                }	 */	
+            
+                 }
 }
 ?>
 <!DOCTYPE html>
@@ -286,7 +293,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                   
                                 </form>
                               <!--Fin Contenido OJO AQUI TERMINA MI VISTA-->
-
+                              <?php
+                            echo $doc_usuario1."<br>";
+                            echo $clave_usuario."<br>";
+                            echo $email_usuario."<br>";
+                            echo $tipo_usuario."<br>";                             
+                             ?>
                            </div>
                         </div>
                         
