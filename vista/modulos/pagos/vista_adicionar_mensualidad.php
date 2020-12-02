@@ -154,8 +154,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				<option disabled selected>Seleccione un funcionario</option>
 				<?php
 				require_once("../../../modelo/modelo_funcionario.php");
-				$fun = new funcionario();
-				if ($resultado=$fun->buscar('funcionario',null))
+				$fun = new Funcionario();
+				if ($resultado=$fun->buscar1('funcionario',null))
 				{
 				foreach ($resultado as $valor)
 												  {
@@ -170,7 +170,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								
 				</div>
         
-				<button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Agregar usuario</button>
+				
+        <div class="form-group">
+											<button class="btn btn-primary" type="submit">Guardar</button>
+											<button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
+										</div>
                 <?php 
                  if ($errores)
                 { 

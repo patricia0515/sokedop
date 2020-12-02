@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php
+  	require_once("../../partials/head.php");
+  ?>
     <head>
     <script type="text/javascript">
         function preguntar(valor)
         {
-            if (confirm('¿Desea eliminar el regristro?, con el número de documento '+valor))
+            if (confirm('¿Desea eliminar el regristro? de ID '+valor))
             {
                 window.location.href="vista_mensualidad.php?resp="+valor;
             }
         }
     </script>
     </head>
-<?php
-  	require_once("../../partials/head.php");
-  ?>
 <body class="hold-transition skin-blue sidebar-mini">
        <div class="wrapper">
 
@@ -55,9 +55,9 @@
 			<th>Valor</th>
 			<th>Fecha</th>
 			<th>Mes</th>
-			<th>Estudiante</th>
-      <th>Funcionario</th>
-      <th>Acciones</th>
+			<th>Documento estudiante</th>
+      <th>No. del funcionario</th>
+      <th>Opciones</th>
 		</tr>
 		</thead>
 <?php
@@ -93,7 +93,7 @@
     {
        if($us->borrar('mensualidad',$_GET['resp']))
        {
-           echo "Registro eliminado, fisicamente";
+           echo "Registro fue eliminado";
        }
        else
        {
@@ -111,7 +111,11 @@
               </div>
             </div>
           </section>
-           </div>
+           </div>          
     </div>
+    <?php
+		require_once("../../partials/footer.php");
+		require_once("../../partials/script.php");
+      ?>
 </body>
 </html>
