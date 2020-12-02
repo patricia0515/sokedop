@@ -31,7 +31,7 @@
                                                              <!--Contenido OJO AQUI INICIA MI VISTA-->
                               <div class="row">
                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                  <h3>Listado de Eventos<a href="vista_adicionar_calendario.php"> <button class="btn btn-success">Nuevo</button></a></h3>
+                                  <h3>Listado de Eventos<a href="vista_crear_calendario.php"> <button class="btn btn-success">Nuevo</button></a></h3>
                                   <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
                                   <?php require_once("../../partials/vista_buscar.php") ?>   
                                 </div>
