@@ -97,7 +97,22 @@ else
                                 <div class="row">
                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                   <h3>Modificar Categoría:       <?php if(isset($nombre)) echo $nombre?></h3>
-                                    
+                                  <?php 
+                                   if ($errores)
+                                  {
+
+                                  ?>
+                                     <div class="alert alert-danger">
+                                      <ul>
+                                  <?php 
+                                         foreach ($errores as $error):?>
+                                           <li> <?php echo $error ?> </li>
+                                  <?php  endforeach; ?>
+                                       </ul>
+									                </div>
+                                  <?php 
+                                  }
+                                ?>
                                   </div>
                               </div>
                                                                  

@@ -16,9 +16,9 @@
    }
    //Los métodos set colocan datos en
    //los atributos de las clases     
-   public function setDoc_usuario($documento)
+   public function setDoc_usuario($doc_usuario)
    {
-      $this->doc_usuario = $documento;  
+      $this->doc_usuario = $doc_usuario;  
    }
    //Los métodos get extraen datos de
    //los atributos de las clases
@@ -28,9 +28,9 @@
    }    
 	 
 	 
-   public function setClave_usuario($Clave)
+   public function setClave_usuario($clave_usuario)
    {
-      $this->clave_usuario = $Clave;  
+      $this->clave_usuario = $clave_usuario;  
    }
    public function getClave_usuario()
    {
@@ -38,9 +38,9 @@
    }
 	 
 	 
-   public function setMail_usuario($Mail)
+   public function setMail_usuario($mail_usuario)
    {
-      $this->mail_usuario = $Mail;  
+      $this->mail_usuario = $mail_usuario;  
    }
    public function getMail_usuario()
    {
@@ -49,9 +49,9 @@
 	 
 	 
 	 
-   public function setTipo_usuario($Tipous)
+   public function setTipo_usuario($tipo_usuario)
    {
-      $this->tipo_usuario = $Tipous;  
+      $this->tipo_usuario = $tipo_usuario;  
    }
    public function getTipo_usuario()
    {
@@ -200,14 +200,14 @@
 	 
 	 
 	 
-   public function actualizar($tabla,$campos)
+   public function actualizar($tabla)
    {
       //UPDATE usuario SET Tipo_usuario ='Docente' WHERE doc_usuario = '404444456';
-       $sql="UPDATE".$tabla.
-		   "SET clave_usuario = '".$this->getClave_usuario()."', 
-		        mail_usuario =  '".$this->getMail_usuario(). "', 
-				tipo_usuario = '".$this->getTipo_usuario()."'
-				WHERE doc_usuario = '".$this->getDoc_usuario()."'";
+       $sql="UPDATE".$tabla."SET
+            clave_usuario      = '".$this->getClave_usuario()."', 
+		    mail_usuario       = '".$this->getMail_usuario(). "', 
+			tipo_usuario       = '".$this->getTipo_usuario()."'
+			WHERE doc_usuario  = '".$this->getDoc_usuario()."'";
 	   
        $resultado=$this->conec->query($sql);
        if ($resultado)

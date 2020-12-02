@@ -3,14 +3,14 @@
 require_once("../../../controlador/Controlador_Funciones.php");
 require_once("../../../modelo/modelo_usuario.php");
 require_once("../../../modelo/modelo_funcionario.php");
-//Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
-
 
 //Este array guardará los errores de validación que surjan.
 $errores = array();
 //Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+   /*  Guarda los valores de los campos en variables, siempre y cuando se haya 
+    enviado del formulario, si no se guardará null. */
     $doc_usuario = isset($_POST['doc_usuario']) ? $_POST['doc_usuario'] : null;
     $clave_usuario = isset($_POST['clave_usuario']) ? $_POST['clave_usuario'] : null;
     $email_usuario = isset($_POST['email_usuario']) ? $_POST['email_usuario'] : null;
@@ -24,11 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   $usuario = $doc_usuario;
 	// $usuario = isset($_POST['doc_usuario']) ? $_POST['doc_usuario'] : null;
 	$id_funcionario = isset($_POST['id_funcionario']) ? $_POST['id_funcionario']:null;
-	
+  
    //Valida que el campo documento usuario, no esté vacío.
    if (!validaRequerido($doc_usuario)) {
-      $errores[] = 'El documento del usuario es requerido, no sea digitado. !INCORRECTO!.';
+      $errores[] = 'El documento del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }
+     if (!validaNumero($doc_usuario)){
+     $errores[] = 'El documento del usuario debe ser numerico, no se admiten letras. !INCORRECTO!.';
+    }
+  
    //Valida que el campo clave usuario, no esté vacío.
    if (!validaRequerido($clave_usuario))
    {
@@ -44,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       $errores[] = 'El tipo del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }
 	if (!validaRequerido($tipo_documento)) {
-      $errores[] = 'El tipo dedocumento del usuario es requerido, no sea digitado. !INCORRECTO!.';
+      $errores[] = 'El tipo de documento del usuario es requerido, no sea digitado. !INCORRECTO!.';
    }
    //Valida que el campo clave usuario, no esté vacío.
    if (!validaRequerido($nombres))
@@ -60,62 +64,72 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
    {
       $errores[] = 'El celular del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }
+    if (!validaNumero($celular)){
+    $errores[] = 'El No. celular del usuario debe ser numerico, no se admiten letras. !INCORRECTO!.';
+   }
+ 
 	if (!validaRequerido($direccion))
    {
       $errores[] = 'La dirección usuario es requerida, no se a digitado. !INCORRECTO!.';
    }
     
     if(!$errores)
-    {    
-        try{
+    { 
                 $us=new usuario();
                 $us->setDoc_usuario($doc_usuario);
                 $us->setClave_usuario($clave_usuario);
                 $us->setMail_usuario($email_usuario);
                 $us->setTipo_usuario($tipo_usuario);
-                $us->actualizar("usuario",null);
-
-                $fun=new funcionario();
+                
+                if($us->actualizar("usuario"))
+                {
+                $fun = new Funcionario();
                 $fun->setTipo_documento($tipo_documento);
                 $fun->setNombres($nombres);
                 $fun->setApellidos($apellidos);
                 $fun->setCelular($celular);
                 $fun->setDireccion($direccion);
-                $fun->setUsuario($doc_usuario);
+                $fun->setUsuario($usuario);
                 $fun->setId_funcionario($id_funcionario);
-                $fun->actualizar("funcionario",null);
-
-                header("location: vista_index_usuario.php");
-        }catch(Exception $e)
-            {
-            echo "No se pudo actualizar los registros en ninguna tabla";
-                $us->rollBack();
-                $fun->rollBack();
-            }
-        
-        }
-      }
+                  if($fun->actualizar("funcionario"))
+                  {
+                    header("location: vista_index_usuario.php");	
+                  }else
+                  {
+                    echo "Registro, no se puede actualizar";
+                  }
+                }else
+                {
+                  echo "Registro, no se puede actualizar";
+                }
+                
+                
+                
+                
+    }
+  }
+      
         else{
-            $doc_usuario = isset($_REQUEST['doc']) ? $_REQUEST['doc']:null;
+            $doc_usuario1 = isset($_REQUEST['doc']) ? $_REQUEST['doc']:null;
             $us = new usuario();
-            if ($resultado=$us->editar("usuario",$doc_usuario))
+            if ($resultado=$us->editar("usuario",$doc_usuario1))
             {
               foreach ($resultado as $v)
               {
-                $doc_usuario1 = $v['doc_usuario'];  
+                $doc_usuario = $v['doc_usuario'];  
                 $clave_usuario = $v['clave_usuario']; 
                 $email_usuario = $v['mail_usuario'];
                 $tipo_usuario = $v['tipo_usuario'];        
               }
             }
 
-                $id_funcionario = isset($_REQUEST['id']) ? $_REQUEST['id']:null;
+                $id_funcionario1 = isset($_REQUEST['id']) ? $_REQUEST['id']:null;
                 $fun = new funcionario();
-                if ($resultado=$fun->editar("funcionario",$id_funcionario))
+                if ($resultado=$fun->editar("funcionario",$id_funcionario1))
                 {
                   foreach ($resultado as $v)
                   {
-                    $id_funcionario1 = $v['id_funcionario'];  
+                    $id_funcionario = $v['id_funcionario'];  
                     $tipo_documento = $v['tipo_documento'];
                     $nombres = $v['nombres'];
                     $apellidos = $v['apellidos'];
@@ -164,8 +178,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                               <!--Contenido OJO AQUI INICIA MI VISTA-->
                               <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <h3>Modificar Usuario: <?php echo $doc_usuario1 ?></h3> 
-                                  <h3>ID Funcionario: <?php echo $id_funcionario1 ?></h3>
+                                  <h3>Modificar Usuario: <?php echo $doc_usuario ?></h3> 
+                                  <h3>ID Funcionario: <?php echo $id_funcionario ?></h3>
                                   
                                   <?php 
                                    if ($errores)
@@ -211,7 +225,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                                   <div class="form-group">
                                       <label for="doc_usuario">No. Documento</label>
-                                      <input name="doc_usuario" id="documento" type="text" required value="<?php if(isset($doc_usuario1)) echo $doc_usuario1 ?>" class="form-control" readonly>       
+                                      <input name="doc_usuario" id="documento" type="number" required value="<?php if(isset($doc_usuario)) echo $doc_usuario ?>" class="form-control" readonly>       
+                                      <input name="id_funcionario" type="hidden" value="<?php if(isset($id_funcionario)) echo $id_funcionario ?>">
                                     </div>
                                 </div>
                                 
@@ -235,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="form-group">
 										<label for="celular">Celular</label>
-										<input type="text" name="celular" required value="<?php if(isset($celular)) echo $celular?>" class="form-control" placeholder="No. Celular...">    
+										<input type="number" name="celular" required value="<?php if(isset($celular)) echo $celular?>" class="form-control" placeholder="No. Celular...">    
 									  </div>
 								  </div>
                                 
@@ -294,10 +309,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                 </form>
                               <!--Fin Contenido OJO AQUI TERMINA MI VISTA-->
                               <?php
-                            echo $doc_usuario1."<br>";
+                            echo $doc_usuario."<br>";
                             echo $clave_usuario."<br>";
                             echo $email_usuario."<br>";
-                            echo $tipo_usuario."<br>";                             
+                            echo $tipo_usuario."<br>";
+                            echo $id_funcionario."<br>";
                              ?>
                            </div>
                         </div>

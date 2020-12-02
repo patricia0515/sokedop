@@ -69,7 +69,7 @@
                                              <?php 
 												  //Le estoy pasando la llave primaria de cada tabla---doc para la tabla usuario---e ID para la tabla funcionario
                                               echo "<a href='vista_modificar_usuario.php?doc= ".$valor['Documento']."&id= ".$valor['ID']."'><button class='btn btn-info'>Editar</button></a>";
-                                              echo "<a href='#' onclick='preguntar(".$valor['Documento'].")'><button class='btn btn-danger'> Borrar</button></a> ";
+                                              echo "<a href='#' onclick='preguntar(".$valor['Documento'].$valor['ID'].")'><button class='btn btn-danger'> Borrar</button></a> ";
                                            ?>
                                          </td>
                                        </tr>
@@ -154,7 +154,7 @@
       <script type="text/javascript">
         function preguntar(valor)
         {
-            if (confirm('¿Desea eliminar el regristro?, con el número de documento '+valor))
+            if (confirm('¿Desea eliminar el regristro?, con el número de documento '+valor['Documento']+' '+valor['ID']))
             {
                 window.location.href="vista_index_usuario.php?resp="+valor;
             }

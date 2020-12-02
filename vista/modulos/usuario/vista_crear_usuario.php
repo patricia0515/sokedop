@@ -18,10 +18,6 @@ $celular = isset($_POST['celular']) ? $_POST['celular'] : null;
 $direccion = isset($_POST['direccion']) ? $_POST['direccion'] : null;
 $usuario = isset($_POST['doc_usuario']) ? $_POST['doc_usuario'] : null;
 
-
-
-
-
 //Este array guardará los errores de validación que surjan.
 $errores= array();
 //Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
@@ -30,6 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     //Valida que el campo documento usuario, no esté vacío.
    if (!validaRequerido($doc_usuario)) {
       $errores[] = 'El documento del usuario es requerido, no sea digitado. !INCORRECTO!.';
+   }
+   if (!validaNumero($doc_usuario)){
+    $errores[] = 'El documento del usuario debe ser numerico, no se admiten letras. !INCORRECTO!.';
    }
    //Valida que el campo clave usuario, no esté vacío.
    if (!validaRequerido($clave_usuario))
@@ -62,6 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
    {
       $errores[] = 'El celular del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }
+   if (!validaNumero($celular)){
+    $errores[] = 'El No. celular del usuario debe ser numerico, no se admiten letras. !INCORRECTO!.';
+   }
 	if (!validaRequerido($direccion))
    {
       $errores[] = 'La dirección usuario es requerida, no se a digitado. !INCORRECTO!.';
@@ -80,13 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if ($us->insertar("usuario",null))
         {
-          $fun = new Funcionario();
+        $fun = new Funcionario();
 		  	$fun->setTipo_documento($tipo_documento);
-			$fun->setNombres($nombres);
-			$fun->setApellidos($apellidos);
-			$fun->setCelular($celular);
-			$fun->setDireccion($direccion);
-			$fun->setUsuario($doc_usuario);
+        $fun->setNombres($nombres);
+        $fun->setApellidos($apellidos);
+        $fun->setCelular($celular);
+        $fun->setDireccion($direccion);
+        $fun->setUsuario($doc_usuario);
 			
         }
 		if ($fun->insertar("funcionario",null))
@@ -178,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                                   <div class="form-group">
                                       <label for="doc_usuario">No. Documento</label>
-                                      <input name="doc_usuario" id="documento" type="text" required value="<?php if(isset($doc_usuario)) echo $doc_usuario?>" class="form-control" placeholder="Número de documento...">       
+                                      <input name="doc_usuario" id="documento" type="number" required value="<?php if(isset($doc_usuario)) echo $doc_usuario?>" class="form-control" placeholder="Número de documento...">       
                                     </div>
                                 </div>
                                 
@@ -202,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="form-group">
 										<label for="celular">Celular</label>
-										<input type="text" name="celular" required value="<?php if(isset($celular)) echo $celular?>" class="form-control" placeholder="No. Celular...">    
+										<input type="number" name="celular" required value="<?php if(isset($celular)) echo $celular?>" class="form-control" placeholder="No. Celular...">    
 									  </div>
 								  </div>
                                 
