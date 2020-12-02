@@ -286,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                       <label for="Tipo_usuario">Tipo Usuario</label>
                                         <select name="tipo_usuario" id="tipo_us" type="text" required class="form-control" placeholder="tipo de usuario" value="<?php if(isset($tipo_usuario)) echo $tipo_usuario?>">
                                           <option <?php if ($tipo_usuario==''){echo 'selected';} ?> disabled>Seleccione una opción</option>
-										  <option <?php if ($tipo_usuario=='Administrador'){echo 'selected';} ?>>Administrador</option>
+										                      <option <?php if ($tipo_usuario=='Administrador'){echo 'selected';} ?>>Administrador</option>
                                           <option <?php if ($tipo_usuario=='Entrenador'){echo 'selected';} ?>>Entrenador</option>
                                           <option <?php if ($tipo_usuario=='Contador'){echo 'selected';} ?>>Contador</option>              
                                         </select> 
@@ -314,6 +314,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                             echo $email_usuario."<br>";
                             echo $tipo_usuario."<br>";
                             echo $id_funcionario."<br>";
+                            echo $tipo_documento."<br>";
                              ?>
                            </div>
                         </div>
