@@ -114,7 +114,7 @@ else
                       <div class="col-md-12">
                           <div class="row">
                                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                  <h3>Actualizar mensualidad</h3>
+                                  <h3>Actualizar evento</h3>
                                     <?php 
                                    if ($errores)
                                   { 
@@ -151,7 +151,7 @@ else
           <input name="descripcion_calendario" id="descripcion" type="text" class="form-control" placeholder="descripcion del calendario" value="<?php if(isset($descripcion_calendario)) echo $descripcion_calendario?>"> 
           <span class="help-block"></span>
         </div>
-        <button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Modificar mensualidad</button>
+        <button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Modificar evento</button>
                 <?php 
                  if ($errores)
                 { 

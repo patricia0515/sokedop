@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <?php
         require_once("../../../modelo/modelo_funcionario.php");
         $fun = new funcionario();
-        if ($resultado=$fun->buscar('funcionario',null))
+        if ($resultado=$fun->buscar1('funcionario',null))
         {
         foreach ($resultado as $valor)
                           {
