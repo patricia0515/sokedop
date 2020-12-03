@@ -3,6 +3,17 @@
   <?php
     require_once("../../partials/head.php");
   ?>
+  <head>
+    <script type="text/javascript">
+        function preguntar(valor)
+        {
+            if (confirm('¿Desea eliminar el regristro? de ID '+valor))
+            {
+                window.location.href="vista_index_calendario.php?resp="+valor;
+            }
+        }
+    </script>
+    </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
 
