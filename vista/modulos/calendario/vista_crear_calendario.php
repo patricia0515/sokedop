@@ -117,18 +117,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
         <div class ="form-grup">
+        <label for="nombre_calendario">Nombre</label>
           <input name="nombre_calendario" id="nombre" type="text" class="form-control" placeholder="nombre de calendario" value="<?php if(isset($nombre_calendario)) echo $nombre_calendario?>"> 
           <span class="help-block"></span>
         </div>
         <div>
+        <label for="estado_calendario">Estado</label>
           <input name="estado_calendario" id="estado" type="text" class="form-control" placeholder="estado del calendario" value="<?php if(isset($estado_calendario)) echo $estado_calendario?>"> 
           <span class="help-block"></span>
         </div>
         <div>
+        <label for="fecha_calendario">Fecha</label>
           <input name="fecha_calendario" id="fecha_calendario" type="date" class="form-control" placeholder="fecha del calendario" value="<?php if(isset($fecha_calendario)) echo $fecha_calendario?>"> 
           <span class="help-block"></span>
         </div>
         <div>
+        <label for="descripcion_calendario">Descripcion</label>
           <input name="descripcion_calendario" id="descripcion" type="text" class="form-control" placeholder="descripcion del calendario" value="<?php if(isset($descripcion_calendario)) echo $descripcion_calendario?>"> 
           <span class="help-block"></span>
         </div>
