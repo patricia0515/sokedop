@@ -6,8 +6,10 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
-    /* // Logo
-    $this->Image('logo.png',10,8,33); */
+    // Logo
+    $this->Image('logo.jpg',10,8,33);
+    // Salto de línea
+    $this->Ln(10);
     // Arial bold 15
     $this->SetFont('Arial','B',20);
     // Movernos a la derecha
