@@ -137,9 +137,16 @@ public function buscar($tabla,$condicion)
       } 
    }
    
+   
+   
 public function actualizar($tabla,$datos)
 {
-       $sql="update ".$tabla." set nombre = '".$this->getNombre()."', estado = '".$this->getEstado()."', fecha = '".$this->getFecha()."', descripcion = '".$this->getDescripcion()."' WHERE id_calendario = '".$this->getId()."'";
+       $sql="update ".$tabla." 
+       set nombre = '".$this->getNombre()."', 
+       estado = '".$this->getEstado()."', 
+       fecha = '".$this->getFecha()."', 
+       descripcion = '".$this->getDescripcion().
+       "' WHERE id_calendario = '".$this->getId()."'";
        $resultado = $this->conec->query($sql);
        if ($resultado)
        {
@@ -150,6 +157,24 @@ public function actualizar($tabla,$datos)
            return false;
        }
 }
+public function editar($tabla,$condicion)
+   {
+      
+         $sql="Select * from ".$tabla." where id_calendario = ".$condicion; 
+		 
+      
+       
+      $resultado=$this->conec->query($sql);
+      if($resultado)
+      {
+		  $row_cnt = $resultado->num_rows;
+          return $resultado->fetch_all(MYSQLI_ASSOC);
+      }
+      else
+      {     
+          return false;
+      }
+   }
 
 public function borrar($tabla,$condicion)
 {
