@@ -97,12 +97,11 @@
                                             }
                                         ?>
                                            </table>
+                                           
                                            <!-- Esta fila contiene el boton para imprimir el reporte de categorias -->
                                            <div class="row">
-                                              <div class="btn-group btn-group-justified">
-                                                
-                                              
-                                              <?php echo "<a href='../../pdf/Reporte_categorias.php?searchText= ".$searchText."' class='btn btn-primary'><span class='glyphicon glyphicon-print'></span>Imprimir Reporte</a>"; ?>
+                                              <div class="btn-group btn-group-justified">                                           
+                                              <?php echo "<a href='../../pdf/Reporte_categorias.php?searchText= ".$searchText."' target='_blank' class='btn btn-primary'><span class='glyphicon glyphicon-print'></span>Imprimir Reporte</a>"; ?>
                                                 <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
                                                 <?php require_once("../../partials/vista_buscar.php") ?>  
                                               </div>
