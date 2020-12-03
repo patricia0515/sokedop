@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <option disabled selected>Seleccione un funcionario</option>
         <?php
         require_once("../../../modelo/modelo_funcionario.php");
-        $fun = new funcionario();
+        $fun = new Funcionario();
         if ($resultado=$fun->buscar1('funcionario',null))
         {
         foreach ($resultado as $valor)
