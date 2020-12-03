@@ -16,6 +16,9 @@ function Header()
     $this->Cell(80,10,utf8_decode('Reporte de Cátegorias'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
+    /* AQUI PONEMOS LOS ENCABEZADOS DE LA LISTA */
+    $this->cell(70,10,utf8_decode('Nombre'),1,0,'C',0);
+    $this->cell(120,10,utf8_decode('Descripción'),1,1,'C',0);
 }
 
 // Pie de página
@@ -30,8 +33,6 @@ function Footer()
 }
 }
 
-
-/* $resultado = unserialize($_REQUEST['categorias']) ? $_REQUEST['categorias']:null; */
 $searchText = isset($_REQUEST['searchText']) ? $_REQUEST['searchText']:null;
 require_once("../../modelo/modelo_categoria.php");
 $cat = new categoria();
@@ -43,17 +44,13 @@ $pdf->AliasNbPages();
 /* Para añadir paguina */
 $pdf->AddPage();
 /* Aqui configuramos la fuente y el tamaño */
-$pdf->SetFont('Arial','B',16);
-    $pdf->cell(90,10,utf8_decode('Nombre'),1,0,'C',0);
-    $pdf->cell(90,10,utf8_decode('Descripción'),1,1,'C',0);
-     //var_dump($resultado);
+$pdf->SetFont('Arial','',16);
+
+    
     foreach ($resultado as $valor)
 {
-
-
-
-    $pdf->cell(90,10,utf8_decode($valor['nombre']),1,0,'C',0);
-    $pdf->cell(90,10,utf8_decode($valor['descripcion']),1,1,'C',0);
+    $pdf->cell(70,10,utf8_decode($valor['nombre']),1,0,'C',0);
+    $pdf->cell(120,10,utf8_decode($valor['descripcion']),1,1,'C',0);
 }
 
 /* esta ultima opción me permite imprimir el pdf */
