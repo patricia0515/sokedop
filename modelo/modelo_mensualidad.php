@@ -108,15 +108,15 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
       if ($condicion==null)
       {
         $sql="select 
-		m.id_mensualidad as id_mensualidad,
-		m.valor as valor, 
-		m.fecha_pago as fecha_pago , 
-		m.mes as mes, 
+		m.id_mensualidad as ID,
+		m.valor as total, 
+		m.fecha_pago as fechadepago , 
+		m.mes as mescancelado, 
         e.nombres as nombre_e,
         e.apellidos as apellido_e,
         c.nombre as nombre_c,
-		f.nombres as nombres_f,
-        f.apellidos as nombres_f
+		f.nombres as nombre_f,
+        f.apellidos as apellido_f
 		from mensualidad as m
 		inner join estudiante as e
         on m.estudiante = e.no_documento
@@ -129,15 +129,15 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
       else
       {
         $sql="select 
-		m.id_mensualidad as id_mensualidad,
-		m.valor as valor, 
-		m.fecha_pago as fecha_pago , 
-		m.mes as mes, 
+		m.id_mensualidad as ID,
+		m.valor as total, 
+		m.fecha_pago as fechadepago , 
+		m.mes as mescancelado, 
         e.nombres as nombre_e,
         e.apellidos as apellido_e,
         c.nombre as nombre_c,
-		f.nombres as nombres_f,
-        f.apellidos as nombres_f
+		f.nombres as nombre_f,
+        f.apellidos as apellido_f
 		from mensualidad as m
 		inner join estudiante as e
         on m.estudiante = e.no_documento
