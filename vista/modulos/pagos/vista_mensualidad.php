@@ -77,7 +77,7 @@
               <td> <?php echo $valor['mescancelado'];?></td>
               <td> <?php echo $valor['nombre_e']." ".$valor['apellido_e'];?> </td>
               <td> <?php echo $valor['nombre_c'];?></td>
-              <td> <?php echo $valor['nombre_f']." ".$valor['apellido_f'];?> </td>
+              <td> <?php echo $valor['nombres_f']." ".$valor['apellidos_f'];?> </td>
             <?php
                //Esta es la manera de enviar un dato a un archivo php Ejemplo:vista_modificar_usuario.php?doc= ".$valor['doc_usuario']
                echo "<td><a href='vista_modificar_mensualidad.php?id= ".$valor['ID']."'class='btn btn-info'>Modificar</a>";
