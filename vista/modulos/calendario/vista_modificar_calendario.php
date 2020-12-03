@@ -16,10 +16,6 @@ $fecha_calendario = isset($_POST['fecha_calendario']) ? $_POST['fecha_calendario
 $descripcion_calendario = isset($_POST['descripcion_calendario']) ? $_POST['descripcion_calendario'] : null;
 
 
-   if (!validaRequerido($id_calendario))
-   {
-      $errores[] = 'El numero de evento es requerido, no se a digitado. !INCORRECTO!.';
-   }
   
    if (!validaRequerido($nombre_calendario))
    {
@@ -37,14 +33,6 @@ $descripcion_calendario = isset($_POST['descripcion_calendario']) ? $_POST['desc
    {
       $errores[] = 'La descripcion del evento es requerida, no se a digitado. !INCORRECTO!.';
    }    
-   //Valida que el campo documento sea numérico y no esté vacío.        
-   if (!validaNumero($id_calendario))
-   {
-      $errores[] = 'El numero del evento es numérico, !INCORRECTO!.';
-   }
-   
-    
-    //Verifica si se han encontrado errores y de no haber, se implementa la lógica del programa.
     
     if(!$errores)
     {
@@ -57,7 +45,7 @@ $descripcion_calendario = isset($_POST['descripcion_calendario']) ? $_POST['desc
         $cal->setDescripcion($descripcion_calendario);
         if ($cal->actualizar("calendario",null))
         {  
-        header("location: vista_calendario.php");  
+        header("location: vista_index_calendario.php");  
         }
         else
         {
