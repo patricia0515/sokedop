@@ -103,6 +103,30 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
            return false;
        }
    }
+
+   public function buscar1($tabla,$condicion)
+   {
+      if ($condicion==null)
+      {
+		  
+         $sql="Select * from ".$tabla;
+      }
+      else
+      {
+         $sql="Select * from ".$tabla." where ".$condicion; 
+      }
+       
+      $resultado=$this->conec->query($sql);
+      if($resultado)
+      {
+          return $resultado->fetch_all(MYSQLI_ASSOC);
+      }
+      else
+      {     
+          return false;
+      }
+   }
+
    public function buscar($condicion)
    {
       if ($condicion==null)
@@ -145,6 +169,8 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
         on m.funcionario = f.id_funcionario
         inner join categoria as c
         on c.id_categoria = e.categoria
+        where c.nombre like '%".$condicion."%'
+        or m.mes like '%".$condicion."%' 
 		order by id_mensualidad desc";   
       }
        
