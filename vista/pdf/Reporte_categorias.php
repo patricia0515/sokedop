@@ -17,8 +17,8 @@ function Header()
     // Salto de línea
     $this->Ln(20);
     /* AQUI PONEMOS LOS ENCABEZADOS DE LA LISTA */
-    $this->cell(70,10,utf8_decode('Nombre'),1,0,'C',0);
-    $this->cell(120,10,utf8_decode('Descripción'),1,1,'C',0);
+    $this->cell(50,10,utf8_decode('Nombre'),1,0,'C',0);
+    $this->cell(140,10,utf8_decode('Descripción'),1,1,'C',0);
 }
 
 // Pie de página
@@ -49,8 +49,8 @@ $pdf->SetFont('Arial','',16);
     
     foreach ($resultado as $valor)
 {
-    $pdf->cell(70,10,utf8_decode($valor['nombre']),1,0,'C',0);
-    $pdf->cell(120,10,utf8_decode($valor['descripcion']),1,1,'C',0);
+    $pdf->cell(50,10,utf8_decode($valor['nombre']),1,0,'L',0);
+    $pdf->cell(140,10,utf8_decode($valor['descripcion']),1,1,'L',0);
 }
 
 /* esta ultima opción me permite imprimir el pdf */
