@@ -141,12 +141,13 @@ public function buscar($tabla,$condicion)
    
 public function actualizar($tabla,$datos)
 {
-       $sql="update ".$tabla." 
+       $sql="UPDATE ".$tabla." 
        set nombre = '".$this->getNombre()."', 
        estado = '".$this->getEstado()."', 
        fecha = '".$this->getFecha()."', 
-       descripcion = '".$this->getDescripcion().
-       "' WHERE id_calendario = '".$this->getId()."'";
+       descripcion = '".$this->getDescripcion()."',
+       funcionario = '".$this->getFuncionario()."' 
+       WHERE id_calendario = '".$this->getId()."'";
        $resultado = $this->conec->query($sql);
        if ($resultado)
        {
