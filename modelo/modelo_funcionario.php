@@ -204,6 +204,7 @@
       }
 	}
       
+<<<<<<< HEAD
     
    
     public function buscar1($tabla,$condicion)
@@ -229,6 +230,9 @@
        }
     }
        
+=======
+    	 
+>>>>>>> 0aa6fac08dcf635b6220b890af5a202da46c4eca
    public function buscar($tabla,$condicion)
    {
       if ($condicion==null)
