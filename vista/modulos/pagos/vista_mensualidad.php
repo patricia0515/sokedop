@@ -47,23 +47,25 @@
                               </div>
     <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-   <table class="table table-striped">
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-condensed table-hover">
   	
 		<thead>
 		<tr>
 			<th>Mensualidad</th>
 			<th>Valor</th>
-			<th>Fecha</th>
-			<th>Mes</th>
+			<th>Fecha de pago</th>
+			<th>Mes Cancelado</th>
 			<th>Documento estudiante</th>
+      <th>Categoria</th>
       <th>No. del funcionario</th>
       <th>Opciones</th>
 		</tr>
 		</thead>
 <?php
     require_once("../../../modelo/modelo_mensualidad.php");
-    $us = new mensualidad();
-    if($resultado=$us->buscar("mensualidad","id_mensualidad like '%".$searchText."%'order by id_mensualidad desc"))
+    $men = new mensualidad();
+    if($resultado=$men->buscar($searchText))
     { 
        //echo var_dump($resultado);
        foreach ($resultado as $valor)
@@ -73,8 +75,9 @@
               <td> <?php echo $valor['valor'];?></td>
               <td> <?php echo $valor['fecha_pago'];?></td>
               <td> <?php echo $valor['mes'];?></td>
-              <td> <?php echo $valor['estudiante'];?></td>
-              <td> <?php echo $valor['funcionario'];?></td>
+              <td> <?php echo $valor['nombre_e']." ".$valor['apellido_e'];?> </td>
+              <td> <?php echo $valor['nombre_c'];?></td>
+              <td> <?php echo $valor['nombre_f']." ".$valor['apellido_f'];?> </td>
             <?php
                //Esta es la manera de enviar un dato a un archivo php Ejemplo:vista_modificar_usuario.php?doc= ".$valor['doc_usuario']
                echo "<td><a href='vista_modificar_mensualidad.php?id= ".$valor['id_mensualidad']."'class='btn btn-info'>Modificar</a>";

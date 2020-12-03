@@ -110,14 +110,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                               </div>
 			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 				<div class ="form-grup">
+        <label for="Id_mensualidad">ID. Mensualidad</label>
 					<input name="valor" id="valor" type="text" class="form-control" placeholder="Valor" required value="<?php if(isset($valor)) echo $valor?>"> 
 					<span class="help-block"></span>
 				</div>
 				<div >
+        <label for="fecha">Fecha</label>
 					<input name="fecha_pago" id="fecha" type="date" class="form-control" placeholder="Fecha de pago" value="<?php if(isset($fecha_pago)) echo $fecha_pago?>"> 
 					<span class="help-block"></span>
 				</div>
 				<div >
+        <label for="mes">Mes</label>
 					<input name="mes" id="mes" type="text" class="form-control" placeholder="Mes" value="<?php if(isset($mes)) echo $mes?>">
                     
 					<span class="help-block"></span>
@@ -125,7 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             
                  
 									
-				<div>                    
+				<div> 
+        <label for="id_estudiante">Doc. Estudiante</label>                   
                    <select name="estudiante" class="form-control" data-live-search="true">
                       <option     disabled selected>Seleccione un estudiante</option> <!-- Este elemento ignoro si esta bien así -->
                       <?php
@@ -149,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 </div>
         <div >
 									
-									 
+				<label for="id_funcionario">ID Funcionario</label>					 
 				<select name="funcionario" class="form-control" data-live-search="true">
 				<option disabled selected>Seleccione un funcionario</option>
 				<?php
@@ -204,6 +208,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	     </section>
         </div>
       </div>
+      <?php
+		require_once("../../partials/footer.php");
+		require_once("../../partials/script.php");
+      ?>
   </body>
 </html>
 

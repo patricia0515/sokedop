@@ -119,30 +119,39 @@ else
                               </div>
 			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
 				<div>
+        <label for="id_mensualidad">ID Mensualidad</label>
 					<input name="id_mensualidad" id="id" type="text" class="form-control" placeholder="id_mensualidad" value="<?php if(isset($id_mensualidad1)) echo $id_mensualidad1?>" readonly> 
 					<span class="help-block"></span>
 				</div>
 				<div>
+        <label for="valor">Valor a pagar</label>
 					<input name="valor" id="valor" type="text" class="form-control" placeholder="valor" value="<?php if(isset($valor)) echo $valor?>"> 
 					<span class="help-block"></span>
 				</div>
 				<div>
+        <label for="fecha_pago">Fecha pago</label>
 					<input name="fecha_pago" id="fecha" type="date" class="form-control" placeholder="fecha de pago" value="<?php if(isset($fecha_pago)) echo $fecha_pago?>"> 
 					<span class="help-block"></span>
 				</div>
 				<div>
+        <label for="mes">Mes de pago</label>
 					<input name="mes" id="mes" type="text" class="form-control" placeholder="Mes" value="<?php if(isset($mes)) echo $mes?>"> 
 					<span class="help-block"></span>
 				</div>
                 <div>
+                <label for="estudante">Estudiante</label>
 					<input name="estudiante" id="documento" type="text" class="form-control" placeholder="Documento" value="<?php if(isset($estudiante1)) echo $estudiante1?>"readonly> 
 					<span class="help-block"></span>
 				</div>
                 <div>
+                <label for="funcionario">funcionario</label>
 					<input name="funcionario" id="documento" type="text" class="form-control" placeholder="Documento" value="<?php if(isset($funcionario1)) echo $funcionario1?>"readonly> 
 					<span class="help-block"></span>
 				</div>
-				<button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Modificar mensualidad</button>
+				<div class="form-group">
+											<button class="btn btn-primary" type="submit">Guardar</button>
+											<button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
+										</div>
                 <?php 
                  if ($errores)
                 { 
@@ -167,5 +176,9 @@ else
           </section>
         </div>
       </div>
+      <?php
+		require_once("../../partials/footer.php");
+		require_once("../../partials/script.php");
+      ?>
   </body>
 </html>

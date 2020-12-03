@@ -344,3 +344,20 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+select 
+		m.id_mensualidad as mensualidad,
+		m.valor as valor, 
+		m.fecha_pago as fecha , 
+		m.mes as mes, 
+        e.nombres as nombre,
+        e.apellidos as apellido, 
+        f.nombres as nombres,
+        f.apellidos as apellidos
+		from mensualidad as m
+		inner join estudiante as e
+        on m.estudiante = e.no_documento
+        inner join mensualidad as m
+        on m.funcionario = f.no_documento
+
+		order by ID desc
