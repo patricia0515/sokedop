@@ -135,8 +135,11 @@ else
           <input name="descripcion_calendario" id="descripcion" type="text" class="form-control" placeholder="descripcion del calendario" value="<?php if(isset($descripcion_calendario)) echo $descripcion_calendario?>"> 
           <span class="help-block"></span>
         </div>
-        <button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Modificar evento</button>
-                <?php 
+        <div class="form-group">
+											<button class="btn btn-primary" type="submit">Guardar</button>
+											<button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
+										</div>
+                 <?php 
                  if ($errores)
                 { 
                 ?>
