@@ -21,8 +21,9 @@ function Header()
     // Times bold 14
     $this->SetFont('Times','',10);
     //Fecha de Impresión   
-    $this->Cell(100,10,utf8_decode('Fecha de Impresión:'),0,0,'R');
-    $this->Cell(20,10,date('d/m/Y'),0,1,'R');
+    $this->Cell(95,10,utf8_decode('Fecha de Impresión:'),0,0,'R');
+    date_default_timezone_set('America/Bogota');
+    $this->Cell(32,10,date('d-m-Y H:i:s',time()),0,1,'R');
     // Salto de línea
     $this->Ln(20);
     // Arial bold 15
