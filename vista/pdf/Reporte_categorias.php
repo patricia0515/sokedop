@@ -17,6 +17,13 @@ function Header()
     // Título
     $this->Cell(80,10,utf8_decode('Reporte de Cátegorias'),0,0,'C');
     // Salto de línea
+    $this->Ln(07);
+    // Times bold 14
+    $this->SetFont('Times','',10);
+    //Fecha de Impresión   
+    $this->Cell(100,10,utf8_decode('Fecha de Impresión:'),0,0,'R');
+    $this->Cell(20,10,date('d/m/Y'),0,1,'R');
+    // Salto de línea
     $this->Ln(20);
     // Arial bold 15
     $this->SetFont('Arial','B',15);
@@ -36,7 +43,7 @@ function Footer()
     $this->cell(190,10,utf8_decode('Club Deportivo Coaching FC '),0,0,'C',0);
     $this->Ln(05);
     $this->cell(190,10,utf8_decode('Reconocimiento deportivo IDRD 339'),0,0,'C',0);
-    $this->Ln(10);
+    $this->Ln(07);
     // Arial italic 8
     $this->SetFont('Arial','I',8);
     $this->Cell(0,10,utf8_decode('Página').$this->PageNo().'/{nb}',0,0,'C');
