@@ -204,19 +204,7 @@
       }
 	}
       
-    
-   public function buscar1($tabla,$condicion)
-   {
-      if ($condicion==null)
-      {
-		  
-         $sql="Select * from ".$tabla;
-      }
-      else
-      {
-         $sql="Select * from ".$tabla." where ".$condicion; 
-      }
-       
+    	 
    public function buscar($tabla,$condicion)
    {
       if ($condicion==null)

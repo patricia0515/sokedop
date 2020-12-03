@@ -94,7 +94,7 @@
     
     if (isset($_GET['resp']))
     {
-       if($us->borrar('mensualidad',$_GET['resp']))
+       if($men->borrar('mensualidad',$_GET['resp']))
        {
            echo "Registro fue eliminado";
        }
