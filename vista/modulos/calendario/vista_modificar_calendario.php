@@ -132,10 +132,6 @@ else
                               </div>
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
         <div>
-          <input name="idcalendario" id="identificador" type="numb" class="form-control" placeholder="Numero de calendario" value="<?php if(isset($id_calendario)) echo $id_calendario?>"readonly> 
-          <span class="help-block"></span>
-        </div>
-        <div>
           <input name="nombre_calendario" id="nombre" type="text" class="form-control" placeholder="nombre de calendario" value="<?php if(isset($nombre_calendario)) echo $nombre_calendario?>"> 
           <span class="help-block"></span>
         </div>
