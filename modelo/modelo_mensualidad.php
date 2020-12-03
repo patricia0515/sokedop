@@ -126,7 +126,7 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
           return false;
       }
    }
-   
+
    public function buscar($condicion)
    {
       if ($condicion==null)
@@ -169,6 +169,8 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
         on m.funcionario = f.id_funcionario
         inner join categoria as c
         on c.id_categoria = e.categoria
+        where c.nombre like '%".$condicion."%'
+        or m.mes like '%".$condicion."%' 
 		order by id_mensualidad desc";   
       }
        
