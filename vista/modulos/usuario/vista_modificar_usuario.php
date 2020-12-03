@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
    {
       $errores[] = 'El email del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }
-   if (!validaRequerido($tip  o_usuario))
+   if (!validaRequerido($tipo_usuario))
    {
       $errores[] = 'El tipo del usuario es requerido, no se a digitado. !INCORRECTO!.';
    }

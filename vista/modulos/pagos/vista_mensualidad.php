@@ -71,13 +71,13 @@
        foreach ($resultado as $valor)
        {   
 ?>        <tr>   
-              <td> <?php echo $valor['id_mensualidad'];?></td>
-              <td> <?php echo $valor['valor'];?></td>
-              <td> <?php echo $valor['fecha_pago'];?></td>
-              <td> <?php echo $valor['mes'];?></td>
+              <td> <?php echo $valor['id_men'];?></td>
+              <td> <?php echo $valor['vlr'];?></td>
+              <td> <?php echo $valor['f_p'];?></td>
+              <td> <?php echo $valor['m'];?></td>
               <td> <?php echo $valor['nombre_e']." ".$valor['apellido_e'];?> </td>
               <td> <?php echo $valor['nombre_c'];?></td>
-              <td> <?php echo $valor['nombre_f']." ".$valor['apellido_f'];?> </td>
+              <td> <?php echo $valor['nombres_f']." ".$valor['apellidos_f'];?> </td>
             <?php
                //Esta es la manera de enviar un dato a un archivo php Ejemplo:vista_modificar_usuario.php?doc= ".$valor['doc_usuario']
                echo "<td><a href='vista_modificar_mensualidad.php?id= ".$valor['id_mensualidad']."'class='btn btn-info'>Modificar</a>";
