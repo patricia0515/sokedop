@@ -31,9 +31,6 @@
                               <div class="row">
                                   <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                     <h3>Listado de Categorías <a href="vista_crear_categoria.php"> <button class="btn btn-success">Nuevo</button></a></h3>
-
-
-
                                     <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
                                     <?php require_once("../../partials/vista_buscar.php") ?>  
                                   </div>
@@ -73,6 +70,7 @@
                                               echo "<td><a href='#' onclick='preguntar(".$valor['id_categoria'].")' class='btn btn-danger'> Borrar</a></td>";
                                            ?>
                                            
+                                           
                                          </tr>
 
                                         <?php
@@ -99,6 +97,16 @@
                                             }
                                         ?>
                                            </table>
+                                           <!-- Esta fila contiene el boton para imprimir el reporte de categorias -->
+                                           <div class="row">
+                                              <div class="btn-group btn-group-justified">
+                                                <a href="../../pdf/Reporte_categorias.php" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span>Imprimir Reporte</a>
+                                                <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
+                                                <?php require_once("../../partials/vista_buscar.php") ?>  
+                                              </div>
+                                            </div>
+                                            <br>
+
                                         </body>
                                         <?php
                                           foreach ($cat->contar() as $conteo)
