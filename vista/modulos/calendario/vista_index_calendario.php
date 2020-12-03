@@ -47,6 +47,8 @@
                                         <th>Estado</th>
                                         <th>Fecha</th>
                                         <th>Descripcion</th>
+                                        <th>Funcionario</th>
+                                        <th>Opciones</th>
                                       </thead>
                                       <!--Este bucle va recorrear todas los estudiantes, los va a almacenar en la variable $est de manera independiente y se ira mostrando en las filas-->
                                       <?php

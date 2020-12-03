@@ -9,7 +9,7 @@ $errores= array();
 //Pregunta si está llegando una petición por POST, lo que significa que el usuario envió el formulario.
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    $id_calendario = isset($_POST['idcalendario']) ? $_POST['idcalendario'] : null;
+$id_calendario = isset($_POST['idcalendario']) ? $_POST['idcalendario'] : null;
 $nombre_calendario = isset($_POST['nombre_calendario']) ? $_POST['nombre_calendario'] : null;
 $estado_calendario = isset($_POST['estado_calendario']) ? $_POST['estado_calendario'] : null;
 $fecha_calendario = isset($_POST['fecha_calendario']) ? $_POST['fecha_calendario'] : null;
@@ -57,7 +57,7 @@ else
 {
     $id_calendario=isset($_REQUEST['id']) ? $_REQUEST['id']:null;
     $cal = new calendario();
-    if ($resultado=$cal->buscar('calendario',$id_calendario))
+    if ($resultado=$cal->actualizar('calendario',$id_calendario))
     {
       foreach ($resultado as $v)
       {
