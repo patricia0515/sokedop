@@ -204,7 +204,35 @@
       }
 	}
       
+<<<<<<< HEAD
+    
+   
+    public function buscar1($tabla,$condicion)
+    {
+       if ($condicion==null)
+       {
+       
+          $sql="Select * from ".$tabla;
+       }
+       else
+       {
+          $sql="Select * from ".$tabla." where ".$condicion; 
+       }
+        
+       $resultado=$this->conec->query($sql);
+       if($resultado)
+       {
+           return $resultado->fetch_all(MYSQLI_ASSOC);
+       }
+       else
+       {     
+           return false;
+       }
+    }
+       
+=======
     	 
+>>>>>>> 0aa6fac08dcf635b6220b890af5a202da46c4eca
    public function buscar($tabla,$condicion)
    {
       if ($condicion==null)

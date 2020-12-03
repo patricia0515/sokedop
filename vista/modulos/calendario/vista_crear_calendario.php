@@ -3,7 +3,6 @@
 require_once("../../../controlador/Controlador_Funciones.php");
 require_once("../../../modelo/modelo_calendario.php");
 //Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
-$id_calendario = isset($_POST['id_calendario']) ? $_POST['id_calendario'] : null;
 $nombre_calendario = isset($_POST['nombre_calendario']) ? $_POST['nombre_calendario'] : null;
 $estado_calendario = isset($_POST['estado_calendario']) ? $_POST['estado_calendario'] : null;
 $fecha_calendario = isset($_POST['fecha_calendario']) ? $_POST['fecha_calendario'] : null;
@@ -17,17 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     //Valida que el campo documento usuario, no esté vacío.
    //Valida que el campo clave usuario, no esté vacío.
-   if (!validaRequerido($id_calendario)) {
-      $errores[] = 'El numero del calendario es requerido, no sea digitado. !INCORRECTO!.';
-   }
+   
 
 
-   //Valida que el campo clave usuario, no esté vacío.
    if (!validaRequerido($nombre_calendario))
    {
       $errores[] = 'El nombre del calendario es requerido, no se a digitado. !INCORRECTO!.';
    }
-   //Valida que el email usuario, no esté vacío.
+   
    if (!validaRequerido($estado_calendario))
    {
       $errores[] = 'El estado del calendario es requerido, no se a digitado. !INCORRECTO!.';
@@ -41,12 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
    {
       $errores[] = 'La descripcion del usuario es requerida, no se a digitado. !INCORRECTO!.';
    }    
-   //Valida que el campo documento sea numérico y no esté vacío.        
-   if (!validaNumero($id_calendario))
-   {
-      $errores[] = 'El numero del calendario es de tipo numérico, !INCORRECTO!.';
-   }
-
+   
    if (!validaRequerido($funcionario))
    {
       $errores[] = 'El funcionario es requerido, no se a digitado. !INCORRECTO!.';
@@ -56,9 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     if(!$errores)
     {
-        require_once("vista_calendario.php");
+        //require_once("vista_calendario.php");
         $cal=new calendario();
-        $cal->setId($id_calendario);
         $cal->setNombre($nombre_calendario);
         $cal->setEstado($estado_calendario);
         $cal->setFecha($fecha_calendario);     
@@ -67,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         if ($cal->insertar("calendario",null))
         {
-          echo header("location: vista_calendario.php");   
+          echo header("location: vista_index_calendario.php");   
         }
         else
         {
@@ -77,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <?php
     require_once("../../partials/head.php");
   ?>
@@ -125,11 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                   </div>
                               </div>
       <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <div>
-          <input name="id_calendario" id="identificador" type="numb" class="form-control" placeholder="Numero de calendario" value="<?php if(isset($id_calendario)) echo $id_calendario?>"> 
-          <span class="help-block"></span>
-        </div>
-        <div>
+
+        <div class ="form-grup">
           <input name="nombre_calendario" id="nombre" type="text" class="form-control" placeholder="nombre de calendario" value="<?php if(isset($nombre_calendario)) echo $nombre_calendario?>"> 
           <span class="help-block"></span>
         </div>
@@ -146,29 +133,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           <span class="help-block"></span>
         </div>
         <div >
-                  
-                   
-        <select name="funcionario" class="form-control" data-live-search="true">
-        <option disabled selected>Seleccione un funcionario</option>
-        <?php
-        require_once("../../../modelo/modelo_funcionario.php");
-        $fun = new Funcionario();
-        if ($resultado=$fun->buscar1('funcionario',null))
-        {
-        foreach ($resultado as $valor)
-                          {
-        ?>
-        <option value="<?php echo $valor['id_funcionario'];?>"><?php echo $valor['nombres'];?> <?php echo $valor['apellidos'];?></option>
-        <?php                          
-           }
-        }
-            ?>
-        </select>
+									
+				<label for="id_funcionario">ID Funcionario</label>					 
+				<select name="funcionario" class="form-control" data-live-search="true">
+				<option disabled selected>Seleccione un funcionario</option>
+				<?php
+				require_once("../../../modelo/modelo_funcionario.php");
+				$fun = new Funcionario();
+				if ($resultado=$fun->buscar1('funcionario',null))
+				{
+				foreach ($resultado as $valor)
+												  {
+				?>
+				<option value="<?php echo $valor['id_funcionario'];?>"><?php echo $valor['nombres'];?> <?php echo $valor['apellidos'];?></option>
+				<?php												   
+				   }
+				}
+				    ?>
+				</select>
                     <span class="help-block"></span> 
-                
-        </div>
+								
+				</div>
         
-        <button class="btn btn-block bt-login" type="submit" id="submit_btn" data-loading-text="Agregar....">Agregar usuario</button>
+				
+        <div class="form-group">
+											<button class="btn btn-primary" type="submit">Guardar</button>
+											<button class="btn btn-danger" type="button" onclick="history.back()" name="volver atrás" value="volver atrás">Cancelar</button>
+										</div>
                 <?php 
                  if ($errores)
                 { 
@@ -182,9 +173,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 <?php 
                 }
                 ?>
-        
-      </form>
-      <div>
+				
+			</form>
+			<div>
         
       </div>
         </div>   
