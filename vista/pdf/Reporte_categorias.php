@@ -10,7 +10,7 @@ function Header()
     $this->Image('logo.jpg',10,8,33);
     // Salto de línea
     $this->Ln(10);
-    // Arial bold 15
+    // Arial bold 20
     $this->SetFont('Arial','B',20);
     // Movernos a la derecha
     $this->Cell(55);
@@ -18,6 +18,8 @@ function Header()
     $this->Cell(80,10,utf8_decode('Reporte de Cátegorias'),0,0,'C');
     // Salto de línea
     $this->Ln(20);
+    // Arial bold 15
+    $this->SetFont('Arial','B',15);
     /* AQUI PONEMOS LOS ENCABEZADOS DE LA LISTA */
     $this->cell(50,10,utf8_decode('Nombre'),1,0,'C',0);
     $this->cell(140,10,utf8_decode('Descripción'),1,1,'C',0);
@@ -27,10 +29,16 @@ function Header()
 function Footer()
 {
     // Posición: a 1,5 cm del final
-    $this->SetY(-15);
+    $this->SetY(-30);
+    // Arial italic 8
+    $this->SetFont('Arial','I',12);
+    // Número de página
+    $this->cell(190,10,utf8_decode('Club Deportivo Coaching FC '),0,0,'C',0);
+    $this->Ln(05);
+    $this->cell(190,10,utf8_decode('Reconocimiento deportivo IDRD 339'),0,0,'C',0);
+    $this->Ln(10);
     // Arial italic 8
     $this->SetFont('Arial','I',8);
-    // Número de página
     $this->Cell(0,10,utf8_decode('Página').$this->PageNo().'/{nb}',0,0,'C');
 }
 }
@@ -46,7 +54,7 @@ $pdf->AliasNbPages();
 /* Para añadir paguina */
 $pdf->AddPage();
 /* Aqui configuramos la fuente y el tamaño */
-$pdf->SetFont('Arial','',16);
+$pdf->SetFont('Arial','',13);
 
     
     foreach ($resultado as $valor)
