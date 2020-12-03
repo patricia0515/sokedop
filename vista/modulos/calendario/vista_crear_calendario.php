@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $cal=new calendario();
         $cal->setNombre($nombre_calendario);
         $cal->setEstado($estado_calendario);
-        $cal->setFecha($fecha_calendario);     
+        $cal->setFecha_calendario($fecha_calendario);     
         $cal->setDescripcion($descripcion_calendario);
         $cal->setFuncionario($funcionario);
 
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           <span class="help-block"></span>
         </div>
         <div>
-          <input name="fecha_calendario" id="fecha" type="date" class="form-control" placeholder="fecha del calendario" value="<?php if(isset($fecha_calendario)) echo $fecha_calendario?>"> 
+          <input name="fecha_calendario" id="fecha_calendario" type="date" class="form-control" placeholder="fecha del calendario" value="<?php if(isset($fecha_calendario)) echo $fecha_calendario?>"> 
           <span class="help-block"></span>
         </div>
         <div>

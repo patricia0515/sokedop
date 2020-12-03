@@ -54,11 +54,11 @@ public function getEstado()
 }
 
 
-public function setFecha($fecha)
+public function setFecha_calendario($fecha_calendario)
 {
-       $this->fecha_calendario=$fecha;	
+       $this->fecha_calendario=$fecha_calendario;	
 }
-public function getFecha()
+public function getFecha_calendario()
 {
        return $this->fecha_calendario;	
 }
@@ -86,7 +86,7 @@ public function insertar($tabla,$datos)
  ('".$this->getId()."',
  '".$this->getNombre()."',
  '".$this->getEstado()."',
- '".$this->getFecha()."',
+ '".$this->getFecha_calendario()."',
  '".$this->getDescripcion()."',
  '".$this->getFuncionario()."'    
     )";
@@ -168,7 +168,7 @@ public function actualizar($tabla,$datos)
        $sql="UPDATE ".$tabla." 
        set nombre = '".$this->getNombre()."', 
        estado = '".$this->getEstado()."', 
-       fecha = '".$this->getFecha()."', 
+       fecha = '".$this->getFecha_calendario()."', 
        descripcion = '".$this->getDescripcion()."',
        funcionario = '".$this->getFuncionario()."' 
        WHERE id_calendario = '".$this->getId()."'";

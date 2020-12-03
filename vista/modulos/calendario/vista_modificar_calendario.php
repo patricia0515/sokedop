@@ -42,7 +42,7 @@ $funcionario = isset($_POST['funcionario']) ? $_POST['funcionario'] : null;
         $cal->setId($id_calendario);
         $cal->setNombre($nombre_calendario);
         $cal->setEstado($estado_calendario);
-        $cal->setFecha($fecha_calendario);     
+        $cal->setFecha_calendario($fecha_calendario);     
         $cal->setDescripcion($descripcion_calendario);
         $cal->setFuncionario($funcionario);
         if ($cal->actualizar("calendario",null))
@@ -139,7 +139,7 @@ else
         </div>
         <div>
         <label for="fecha_calendario">Fecha Calendario</label>
-          <input name="fecha_calendario" id="fecha" type="date" class="form-control" placeholder="fecha del calendario" value="<?php if(isset($fecha_calendario)) echo $fecha_calendario?>"> 
+          <input name="fecha_calendario" id="fecha_calendario" type="date" class="form-control" placeholder="fecha del calendario" value="<?php if(isset($fecha_calendario)) echo $fecha_calendario?>"> 
           <span class="help-block"></span>
         </div>
         <div>
