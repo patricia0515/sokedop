@@ -67,19 +67,19 @@
 
                                             $cal = new calendario();
                                             //if ($resultado=$est->buscar('estudiante',"nombres like '%".$searchText."%' or apellidos like '%".$searchText."%' or no_documento like '%".$searchText."%' order by apellidos asc"))
-                                            if ($resultado=$cal->buscar("calendario",null))
+                                            if ($resultado=$cal->buscar($searchText))
                                             {
                                               //var_dump($resultado);
                                               foreach ($resultado as $valor)
                                             {
                                           ?>
                                          <tr>
-                                           <td> <?php echo $valor['id_calendario'];?></td>
+                                           <td> <?php echo $valor['ID'];?></td>
                                            <td> <?php echo $valor['nombre'];?></td>
                                            <td> <?php echo $valor['estado'];?></td>
                                            <td> <?php echo $valor['fecha'];?></td>
                                            <td> <?php echo $valor['descripcion'];?></td>
-                                           <td> <?php echo $valor['funcionario'];?></td>
+                                           <td> <?php echo $valor['nombre_f']." ".$valor['apellido_f'];?> </td>
                                            
                                                
                                               
@@ -87,9 +87,9 @@
                                            
                                         
                                           <?php 
-                                              echo "<td><a href='vista_modificar_calendario.php?id=".$valor['id_calendario']."'class='btn btn-primary'>Actualizar</a></td>";
+                                              echo "<td><a href='vista_modificar_calendario.php?id=".$valor['ID']."'class='btn btn-primary'>Actualizar</a></td>";
                                               
-                                              echo "<td><a href='#' onclick='preguntar(".$valor['id_calendario'].")' class='btn btn-danger'> Borrar</a> </td>";
+                                              echo "<td><a href='#' onclick='preguntar(".$valor['ID'].")' class='btn btn-danger'> Borrar</a> </td>";
                                           ?>
                                          
                                             </tr>
@@ -115,13 +115,7 @@
                                             }
                                         ?>
                                            </table>
-                                        <?php
-                                          foreach ($cal->contar() as $conteo)
-                                          {      
-                                            echo  "El número de eventos en el sistema es: ".$conteo['num_cal']."<br>";}
-                        $registros=count($resultado);
-                      
-                                        ?>  
+                                          
                                     </div>
                                   </div>
                           </div>

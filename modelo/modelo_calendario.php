@@ -115,17 +115,42 @@ public function contar()
        }
    }
 
-public function buscar($tabla,$condicion)
+public function buscar($condicion)
    {
       if ($condicion==null)
       {
-         $sql="Select * from ".$tabla;
+         $sql="select 
+         c.id_calendario as ID, 
+         c.nombre as nombre, 
+         c.estado as estado, 
+         c.fecha as fecha, 
+         c.descripcion as descripcion, 
+         f.nombres as nombre_f, 
+         f.apellidos as apellido_f   
+         from calendario as c 
+         inner join funcionario as f 
+         on c.funcionario = f.id_funcionario
+         order by ID desc" ;
       }
       else
-      {
-         $sql="Select * from ".$tabla." where id_calendario = ".$condicion; 
-      }
-       
+      {     
+       $sql="select 
+       c.id_calendario as ID, 
+       c.nombre as nombre, 
+       c.estado as estado, 
+       c.fecha as fecha, 
+       c.descripcion as descripcion, 
+       f.nombres as nombre_f, 
+       f.apellidos as apellido_f   
+       from calendario as c 
+       inner join funcionario as f 
+       on c.funcionario = f.id_funcionario
+       where c.nombre like '%".$condicion."%'
+       or f.nombre like '%".$condicion."%'
+       or c.fecha like '%".$condicion."%'
+       order by ID desc";
+      } 
+   
       $resultado=$this->conec->query($sql);
       if($resultado)
       {
@@ -134,10 +159,9 @@ public function buscar($tabla,$condicion)
       else
       {     
           return false;
-      } 
+      }
    }
-   
-   
+
    
 public function actualizar($tabla,$datos)
 {
