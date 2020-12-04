@@ -26,7 +26,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs"><?php echo $_SESSION['nombres']; ?> <i style="margin-left:5px" class="fa fa-angle-down"></i></span>
+                  <span class="hidden-xs"> <!-- Aqui va la linea de codigo 38 --> <i style="margin-left:5px" class="fa fa-angle-down"></i></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -35,10 +35,10 @@
                      <img src="../imagenes/usuarios/user-default.png" class="img-circle" alt="User Image"/>
                       
                     <p>
-                     	
+                    <!-- Aqui va la linea de codigo 38 -->  	
         				<small>Administrador</small>  
                 <p>
-                  <?php echo $_SESSION['nombres']; ?>
+                  <?php echo $_SESSION['nombre']; ?>
                   <small><?php echo $_SESSION['cargo']; ?></small>
                 </p>
                   </li>
