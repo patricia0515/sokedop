@@ -29,7 +29,7 @@ function Header()
     $this->SetFont('Arial','B',12);
     /* AQUI PONEMOS LOS ENCABEZADOS DE LA LISTA */
     
-    $this->cell(20,10,utf8_decode('Nombre'),1,0,'C',0);
+    $this->cell(30,10,utf8_decode('Nombre'),1,0,'C',0);
     $this->cell(35,10,utf8_decode('Estado'),1,0,'C',0);
     $this->cell(35,10,utf8_decode('Fecha'),1,0,'C',0);
     $this->cell(40,10,utf8_decode('Descripcion'),1,0,'C',0);
@@ -70,7 +70,7 @@ $pdf->SetFont('Arial','',11);
 
 foreach ($resultado as $valor)
 {
-    $pdf->cell(20,10,utf8_decode($valor['nombre']),1,0,'L',0);
+    $pdf->cell(30,10,utf8_decode($valor['nombre']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['estado']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['fecha']),1,0,'L',0);
     $pdf->cell(40,10,utf8_decode($valor['descripcion']),1,0,'L',0);
