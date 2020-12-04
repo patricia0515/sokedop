@@ -44,7 +44,7 @@
                     </div>
                     
                     <div class="pull-right">
-                      <a style="width:80px" data-toggle="modal" href="#logout" class="btn btn-default btn-flat">Salir</a>
+                      <a style="width:80px" data-toggle="modal" href="../../../index.php" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>
