@@ -56,9 +56,9 @@
 			<th>Valor</th>
 			<th>Fecha de pago</th>
 			<th>Mes Cancelado</th>
-			<th>Documento estudiante</th>
+			<th>Estudiante</th>
       <th>Categoria</th>
-      <th>No. del funcionario</th>
+      <th>Funcionario</th>
       <th>Opciones</th>
 		</tr>
 		</thead>
@@ -105,6 +105,32 @@
     }
 ?>
    </table>
+   <!-- Esta fila contiene el boton para imprimir el reporte de categorias -->
+   <div class="row">
+                                              <div class="btn-group btn-group-justified">                                           
+                                              <?php echo "<a href='../../pdf/Reporte_mensualidad.php?searchText= ".$searchText."' target='_blank' class='btn btn-primary'><span class='glyphicon glyphicon-print'></span>Imprimir Reporte</a>"; ?>
+                                                <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
+                                                <?php require_once("../../partials/vista_buscar.php") ?>  
+                                              </div>
+                                            </div>
+                                            <br>
+
+                                        
+                                        <?php
+                                          foreach ($men->contar() as $conteo)
+                                          {      
+                                            echo  "El número de mensualidades en el sistema es: ".$conteo['mensualidades']."<br>";
+                                          }
+                                        $registros=count($resultado);
+                                          if($registros==1)
+                                            {
+                                              echo "Se encontro ".count($resultado)." coincidencia";
+                                            }else
+                                            {
+                                              echo "Se encontraron ".count($resultado)." coincidencias";
+                                            }
+                                        ?>  
+
         </div>
                           </div>
                         </div>

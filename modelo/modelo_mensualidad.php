@@ -126,7 +126,29 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
           return false;
       }
    }
-
+   public function buscar2($tabla,$condicion)
+   {
+      if ($condicion==null)
+      {
+         $sql="Select * from ".$tabla;
+      }
+      else
+      {
+         $sql="Select * from ".$tabla." where ".$condicion; 
+		 
+      }
+       
+      $resultado=$this->conec->query($sql);
+      if($resultado)
+      {
+		  $row_cnt = $resultado->num_rows;
+          return $resultado->fetch_all(MYSQLI_ASSOC);
+      }
+      else
+      {     
+          return false;
+      }
+   }
    public function buscar($condicion)
    {
       if ($condicion==null)
@@ -235,7 +257,9 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
        {
            return false;
        }   
-   }     
+   }
+        
    
- }  
+ }
+   
 ?>

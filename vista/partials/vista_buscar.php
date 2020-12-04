@@ -3,6 +3,7 @@
 require_once("../../../controlador/Controlador_Funciones.php");
 require_once("../../../modelo/modelo_usuario.php");
 
+
 //Guarda los valores de los campos en variables, siempre y cuando se haya enviado del formulario, sino se guardará null.
 
 $searchText = isset($_POST['searchText']) ? $_POST['searchText'] : null;
