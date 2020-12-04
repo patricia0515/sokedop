@@ -59,6 +59,7 @@ if ($resultado=$men->buscar($searchText))
 {
     /* Se instancia el objeto fpdf */
 $pdf = new PDF();
+$pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial','',11);
 foreach ($resultado as $valor)
