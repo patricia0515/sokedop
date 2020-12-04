@@ -1,6 +1,8 @@
 
      <header class="main-header">
-
+     <?php  
+      include"../controlador/controlador_buscar.php";
+      ?>
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -24,7 +26,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs"></span>
+                  <span class="hidden-xs"><?php echo $_SESSION['nombres']; ?> <i style="margin-left:5px" class="fa fa-angle-down"></i></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -35,7 +37,10 @@
                     <p>
                      	
         				<small>Administrador</small>  
-                    </p>
+                <p>
+                  <?php echo $_SESSION['nombres']; ?>
+                  <small><?php echo $_SESSION['cargo']; ?></small>
+                </p>
                   </li>
                   
                   <!-- Menu Footer-->
@@ -45,7 +50,7 @@
                     </div>
                     
                     <div class="pull-right">
-                      <a style="width:80px" data-toggle="modal" href="../../../index.php" class="btn btn-default btn-flat">Salir</a>
+                      <a style="width:80px" data-toggle="modal" href="../../logout.php" class="btn btn-default btn-flat">Salir</a>
                     </div>
                   </li>
                 </ul>

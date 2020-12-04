@@ -250,7 +250,8 @@
 	  if ($busqueda==null)
 	  {
       $sql="select
-      e.no_documento as Documento, 
+      e.no_documento as Documento,
+      e.tipo_documento as Tipo_doc,
       e.nombres as Nombre , 
       e.apellidos as Apellido, 
       c.nombre as Categoria, 

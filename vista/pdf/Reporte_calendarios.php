@@ -1,5 +1,6 @@
 <?php
 require('fpdf.php');
+
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -66,18 +67,19 @@ if ($resultado=$cal->buscar($searchText))
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Arial','',11);
+$pdf->SetFont('Arial','',13);
 
-foreach ($resultado as $valor)
+    
+    foreach ($resultado as $valor)
 {
     $pdf->cell(20,10,utf8_decode($valor['nombre']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['estado']),1,0,'L',0);
     $pdf->cell(40,10,utf8_decode($valor['fecha']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['descripcion']),1,0,'L',0);
     $pdf->cell(50,10,utf8_decode($valor['nombre_f'].' '.$valor['apellido_f']),1,1,'L',0);
-    
 }
 
+/* esta ultima opción me permite imprimir el pdf */
 $pdf->Output();
 }
 ?>

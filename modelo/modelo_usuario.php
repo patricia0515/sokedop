@@ -177,6 +177,30 @@
           return false;
       }
    }
+
+   public function buscaru($tabla,$condicion)
+   {
+      if ($condicion==null)
+      {
+         $sql="Select * from ".$tabla;
+      }
+      else
+      {
+         $sql=$condicion; 
+		 
+      }
+       
+      $resultado=$this->conec->query($sql);
+      if($resultado)
+      {
+		  
+          return $resultado->fetch_all(MYSQLI_ASSOC);
+      }
+      else
+      {     
+          return false;
+      }
+   }
 	 
 		 
 
