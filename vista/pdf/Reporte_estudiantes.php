@@ -15,7 +15,7 @@ function Header()
     // Movernos a la derecha
     $this->Cell(55);
     // Título
-    $this->Cell(80,10,utf8_decode('Reporte de Mensualidades'),0,0,'C');
+    $this->Cell(80,10,utf8_decode('Reporte de Estudiantes'),0,0,'C');
     // Salto de línea
     $this->Ln(07);
     // Times bold 14
@@ -29,11 +29,13 @@ function Header()
     // Arial bold 15
     $this->SetFont('Arial','B',12);
     /* AQUI PONEMOS LOS ENCABEZADOS DE LA LISTA */
-    $this->cell(20,10,utf8_decode('Valor'),1,0,'C',0);
-    $this->cell(35,10,utf8_decode('Fecha de pago'),1,0,'C',0);
-    $this->cell(40,10,utf8_decode('Mes Cancelado'),1,0,'C',0);
-    $this->cell(50,10,utf8_decode('Estudiante'),1,0,'C',0);
-    $this->cell(35,10,utf8_decode('Categoria'),1,1,'C',0);
+    $this->cell(15);
+    $this->cell(20,10,utf8_decode('Tipo Doc'),1,0,'C',0);
+    $this->cell(40,10,utf8_decode('No. Documento'),1,0,'C',0);
+    $this->cell(50,10,utf8_decode('Nombre'),1,0,'C',0);
+    $this->cell(35,10,utf8_decode('Categoria'),1,0,'C',0);
+    $this->cell(20,10,utf8_decode('Foto'),1,1,'C',0);
+    
 }
 
 // Pie de página
@@ -55,9 +57,9 @@ function Footer()
 
 }
 $searchText = isset($_REQUEST['searchText']) ? $_REQUEST['searchText']:null;
-require_once("../../modelo/modelo_mensualidad.php");
-$men = new mensualidad();
-if ($resultado=$men->buscar($searchText))
+require_once("../../modelo/modelo_estudiante.php");
+$est = new estudiante();
+if ($resultado=$est->index($searchText))
 {
     /* Se instancia el objeto fpdf */
 $pdf = new PDF();
@@ -66,11 +68,13 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',11);
 foreach ($resultado as $valor)
 {
-    $pdf->cell(20,10,utf8_decode($valor['total']),1,0,'L',0);
-    $pdf->cell(35,10,utf8_decode($valor['fechadepago']),1,0,'L',0);
-    $pdf->cell(40,10,utf8_decode($valor['mescancelado']),1,0,'L',0);
-    $pdf->cell(50,10,utf8_decode($valor['nombre_e'].' '.$valor['apellido_e']),1,0,'L',0);
-    $pdf->cell(35,10,utf8_decode($valor['nombre_c']),1,1,'L',0);
+    $pdf->cell(15);
+    $pdf->cell(20,30,utf8_decode($valor['Tipo_doc']),1,0,'C',0);
+    $pdf->cell(40,30,utf8_decode($valor['Documento']),1,0,'C',0);
+    $pdf->cell(50,30,utf8_decode($valor['Nombre'].' '.$valor['Apellido']),1,0,'C',0);
+    $pdf->cell(35,30,utf8_decode($valor['Categoria']),1,0,'C',0);
+    $directorio = '../imagenes/estudiantes/';
+    $pdf->Cell(20,30, $pdf->Image($directorio.$valor['Foto'], $pdf->GetX(), $pdf->GetY(),20),1,'C'); 
 }
 $pdf->Output();
 }

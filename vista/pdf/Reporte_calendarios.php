@@ -1,5 +1,6 @@
 <?php
 require('fpdf.php');
+
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -66,9 +67,10 @@ if ($resultado=$cal->buscar($searchText))
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('Arial','',11);
+$pdf->SetFont('Arial','',13);
 
-foreach ($resultado as $valor)
+    
+    foreach ($resultado as $valor)
 {
     $pdf->cell(30,10,utf8_decode($valor['nombre']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['estado']),1,0,'L',0);
