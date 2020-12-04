@@ -170,7 +170,7 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
         on m.funcionario = f.id_funcionario
         inner join categoria as c
         on c.id_categoria = e.categoria
-		order by ID desc";  
+		order by nombre_c asc";  
       }
       else
       {
@@ -193,7 +193,7 @@ $sql="insert into ".$tabla."(valor,fecha_pago,mes,estudiante,funcionario) values
         on c.id_categoria = e.categoria
         where c.nombre like '%".$condicion."%'
         or m.mes like '%".$condicion."%' 
-		order by id_mensualidad desc";   
+		order by nombre_c asc";   
       }
        
       $resultado=$this->conec->query($sql);
