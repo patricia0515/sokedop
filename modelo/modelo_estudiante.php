@@ -256,12 +256,13 @@
       e.apellidos as Apellido, 
       c.nombre as Categoria, 
       e.foto as Foto, 
-      e.estado as Estado
+      e.estado as Estado,
+      e.tel_acudiente as Tel_acu
       from estudiante as e
       inner join categoria as c
       on e.categoria=c.id_categoria
       where estado='Activo'
-      order by Nombre asc";  
+      order by Categoria asc";  
 	  }
 	  else{
 		 $sql="select 
