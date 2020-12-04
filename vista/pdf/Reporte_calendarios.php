@@ -68,7 +68,8 @@ foreach ($resultado as $valor)
     $pdf->cell(20,10,utf8_decode($valor['nombre']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['estado']),1,0,'L',0);
     $pdf->cell(40,10,utf8_decode($valor['fecha']),1,0,'L',0);
-    $pdf->cell(50,10,utf8_decode($valor['nombre_f'].' '.$valor['apellido_f']),1,0,'L',0);
+    $pdf->cell(40,10,utf8_decode($valor['descripcion']),1,0,'L',0);
+    $pdf->cell(50,10,utf8_decode($valor['nombre_f'].' '.$valor['apellido_f']),1,1,'L',0);
     
 }
 $pdf->Output();

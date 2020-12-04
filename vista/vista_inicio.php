@@ -52,7 +52,8 @@
       <!--Fin-Contenido-->
       <?php
 		require_once("partials/footer.php");
-		require_once("partials/script -inicio.php");
+    require_once("partials/script -inicio.php");
+    require_once("partials/script.php");
       ?>     
   </body>
 
