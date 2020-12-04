@@ -101,11 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 }else
                 {
                   echo "Registro, no se puede actualizar";
-                }
-                
-                
-                
-                
+                }         
     }
   }
       
