@@ -92,7 +92,11 @@
                                                }
                                                else
                                                {
-                                                   echo "Registro no fue eliminado";
+                                                ?>
+                                                   <ul style="color: #f00;">
+                                                   <li> <?php echo "Registro no fue eliminado";?></li>
+                                                   </ul>
+                                                   <?php 
                                                }
                                             }
                                         ?>
@@ -114,14 +118,14 @@
                                           {      
                                             echo  "El número de categorias en el sistema es: ".$conteo['categorias']."<br>";
                                           }
-									  		$registros=count($resultado);
-											if($registros==1)
-												{
-													echo "Se encontro ".count($resultado)." coincidencia";
-												}else
-												{
-													echo "Se encontraron ".count($resultado)." coincidencias";
-												}
+                                        $registros=count($resultado);
+                                          if($registros==1)
+                                            {
+                                              echo "Se encontro ".count($resultado)." coincidencia";
+                                            }else
+                                            {
+                                              echo "Se encontraron ".count($resultado)." coincidencias";
+                                            }
                                         ?>  
 
                                         
@@ -153,7 +157,7 @@
       <script type="text/javascript">
         function preguntar(valor)
         {
-            if (confirm('¿Desea eliminar la categoria ?, con ID '+valor))
+            if (confirm('¿Desea eliminar la categoria con ID '+valor+'?'))
             {
                 window.location.href="vista_index_categoria.php?resp="+valor;
             }

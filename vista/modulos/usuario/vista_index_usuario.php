@@ -99,7 +99,6 @@
                                                }
                                                else
                                                {
-												   
                                                    echo "Registro no fue eliminado";
                                                }
                                             }
