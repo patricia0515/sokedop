@@ -33,8 +33,8 @@ function Header()
     $this->cell(20,10,utf8_decode('Tipo Doc'),1,0,'C',0);
     $this->cell(30,10,utf8_decode('No. Documento'),1,0,'C',0);
     $this->cell(65,10,utf8_decode('Nombre'),1,0,'C',0);
-    $this->cell(45,10,utf8_decode('Email'),1,0,'C',0);
-    $this->cell(30,10,utf8_decode('Usuario'),1,1,'C',0);
+    $this->cell(50,10,utf8_decode('Email'),1,0,'C',0);
+    $this->cell(25,10,utf8_decode('Usuario'),1,1,'C',0);
     
 }
 
@@ -72,8 +72,8 @@ foreach ($resultado as $valor)
     $pdf->cell(20,10,utf8_decode($valor['Tipo_doc']),1,0,'L',0);
     $pdf->cell(30,10,utf8_decode($valor['Documento']),1,0,'L',0);
     $pdf->cell(65,10,utf8_decode($valor['Nombre'].' '.$valor['Apellido']),1,0,'L',0);
-    $pdf->cell(45,10,utf8_decode($valor['Mail']),1,0,'L',0);
-    $pdf->cell(30,10,utf8_decode($valor['Cargo']),1,1,'L',0);
+    $pdf->cell(50,10,utf8_decode($valor['Mail']),1,0,'L',0);
+    $pdf->cell(25,10,utf8_decode($valor['Cargo']),1,1,'L',0);
    /*  $directorio = '../imagenes/estudiantes/';
     $pdf->Cell(20,30, $pdf->Image($directorio.$valor['Foto'], $pdf->GetX(), $pdf->GetY(),20),1,'C');  */
 }
