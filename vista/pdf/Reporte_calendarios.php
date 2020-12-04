@@ -14,7 +14,7 @@ function Header()
     // Movernos a la derecha
     $this->Cell(55);
     // Título
-    $this->Cell(80,10,utf8_decode('Reporte de Mensualidades'),0,0,'C');
+    $this->Cell(80,10,utf8_decode('Reporte de Calendarios'),0,0,'C');
     // Salto de línea
     $this->Ln(07);
     // Times bold 14
@@ -31,9 +31,9 @@ function Header()
     
     $this->cell(20,10,utf8_decode('Nombre'),1,0,'C',0);
     $this->cell(35,10,utf8_decode('Estado'),1,0,'C',0);
-    $this->cell(40,10,utf8_decode('Fecha'),1,0,'C',0);
-    $this->cell(50,10,utf8_decode('Descripcion'),1,0,'C',0);
-    $this->cell(35,10,utf8_decode('Funcionario'),1,1,'C',0);
+    $this->cell(35,10,utf8_decode('Fecha'),1,0,'C',0);
+    $this->cell(40,10,utf8_decode('Descripcion'),1,0,'C',0);
+    $this->cell(45,10,utf8_decode('Funcionario'),1,1,'C',0);
 
 }
 
@@ -72,12 +72,11 @@ foreach ($resultado as $valor)
 {
     $pdf->cell(20,10,utf8_decode($valor['nombre']),1,0,'L',0);
     $pdf->cell(35,10,utf8_decode($valor['estado']),1,0,'L',0);
-    $pdf->cell(40,10,utf8_decode($valor['fecha']),1,0,'L',0);
-    $pdf->cell(35,10,utf8_decode($valor['descripcion']),1,0,'L',0);
-    $pdf->cell(50,10,utf8_decode($valor['nombre_f'].' '.$valor['apellido_f']),1,1,'L',0);
-    
+    $pdf->cell(35,10,utf8_decode($valor['fecha']),1,0,'L',0);
+    $pdf->cell(40,10,utf8_decode($valor['descripcion']),1,0,'L',0);
+    $pdf->cell(45,10,utf8_decode($valor['nombre_f'].' '.$valor['apellido_f']),1,1,'L',0);
 }
-
+ob_end_clean(); 
 $pdf->Output();
 }
 ?>
