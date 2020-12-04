@@ -105,8 +105,8 @@
                                             {
                                                if($est->borrar($_GET['resp']))
                                                {
-                                                   //echo "Registro eliminado, fisicamente";
-                                                header("location: vista_index_estudiante.php"); 
+                                                   echo "Registro eliminado, fisicamente";
+   
                                             
                                                }
                                                else

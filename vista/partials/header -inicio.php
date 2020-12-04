@@ -50,7 +50,11 @@
                     </div>
                     
                     <div class="pull-right">
+<<<<<<< HEAD
                       <a style="width:80px" data-toggle="modal" href="../../logout.php" class="btn btn-default btn-flat">Salir</a>
+=======
+                      <a style="width:80px" data-toggle="modal" href="../../../index.html" class="btn btn-default btn-flat">Salir</a>
+>>>>>>> cc86e7dfea55d2da25598392aa422ed86a6d6cf6
                     </div>
                   </li>
                 </ul>
