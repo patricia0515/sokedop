@@ -70,7 +70,7 @@
 
                                             $est = new estudiante();
                                             //if ($resultado=$est->buscar('estudiante',"nombres like '%".$searchText."%' or apellidos like '%".$searchText."%' or no_documento like '%".$searchText."%' order by apellidos asc"))
-											if ($resultado=$est->index($searchText))
+											                  if ($resultado=$est->index($searchText))
                                             {
                                               //var_dump($resultado);
                                               foreach ($resultado as $valor)
@@ -119,14 +119,14 @@
                                           {      
                                             echo  "El número de estudiantes en el sistema es: ".$conteo['estudiantes']."<br>";
                                           }
-									  		$registros=count($resultado);
-											if($registros==1)
-												{
-													echo "Se encontro ".count($resultado)." coincidencia";
-												}else
-												{
-													echo "Se encontraron ".count($resultado)." coincidencias";
-												}
+                                            $registros=count($resultado);
+                                          if($registros==1)
+                                            {
+                                              echo "Se encontro ".count($resultado)." coincidencia";
+                                            }else
+                                            {
+                                              echo "Se encontraron ".count($resultado)." Estudiantes con estado activo.";
+                                            }
                                         ?> 
                                            </table>
                                     </div>

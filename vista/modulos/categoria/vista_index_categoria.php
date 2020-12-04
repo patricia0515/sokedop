@@ -92,15 +92,20 @@
                                                }
                                                else
                                                {
-                                                   echo "Registro no fue eliminado";
+                                                ?>
+                                                   <ul style="color: #f00;">
+                                                   <li> <?php echo "Registro no fue eliminado";?></li>
+                                                   </ul>
+                                                   <?php 
                                                }
                                             }
                                         ?>
                                            </table>
+                                           
                                            <!-- Esta fila contiene el boton para imprimir el reporte de categorias -->
                                            <div class="row">
-                                              <div class="btn-group btn-group-justified">
-                                                <a href="../../pdf/Reporte_categorias.php" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span>Imprimir Reporte</a>
+                                              <div class="btn-group btn-group-justified">                                           
+                                              <?php echo "<a href='../../pdf/Reporte_categorias.php?searchText= ".$searchText."' target='_blank' class='btn btn-primary'><span class='glyphicon glyphicon-print'></span>Imprimir Reporte</a>"; ?>
                                                 <!--Le voy a decir que llame a la vista search ubicada en la carpeta partials de las views-->
                                                 <?php require_once("../../partials/vista_buscar.php") ?>  
                                               </div>
@@ -113,14 +118,14 @@
                                           {      
                                             echo  "El número de categorias en el sistema es: ".$conteo['categorias']."<br>";
                                           }
-									  		$registros=count($resultado);
-											if($registros==1)
-												{
-													echo "Se encontro ".count($resultado)." coincidencia";
-												}else
-												{
-													echo "Se encontraron ".count($resultado)." coincidencias";
-												}
+                                        $registros=count($resultado);
+                                          if($registros==1)
+                                            {
+                                              echo "Se encontro ".count($resultado)." coincidencia";
+                                            }else
+                                            {
+                                              echo "Se encontraron ".count($resultado)." coincidencias";
+                                            }
                                         ?>  
 
                                         
@@ -152,7 +157,7 @@
       <script type="text/javascript">
         function preguntar(valor)
         {
-            if (confirm('¿Desea eliminar la categoria ?, con ID '+valor))
+            if (confirm('¿Desea eliminar la categoria con ID '+valor+'?'))
             {
                 window.location.href="vista_index_categoria.php?resp="+valor;
             }

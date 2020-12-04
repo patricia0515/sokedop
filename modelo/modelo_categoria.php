@@ -120,15 +120,12 @@
           return false;
       }
    }
-     /* Esta funcion editar trae el rsgistro que queremos 
+     /* Esta funcion editar trae el registro que queremos 
      modificar y lo envia para visializarlo en el formulario*/
 	 public function editar($tabla,$condicion)
    {
-      
          $sql="Select * from ".$tabla." where id_categoria = ".$condicion; 
-		 
-      
-       
+		        
       $resultado=$this->conec->query($sql);
       if($resultado)
       {
@@ -162,7 +159,7 @@
    }
    public function borrar($tabla,$condicion)
    {
-      $sql="delete from ".$tabla." where id_categoria =".$condicion;
+      $sql="update ".$tabla." set condicion= 0  where id_categoria =".$condicion;
       $resultado=$this->conec->query($sql);
       if ($resultado)
        {
