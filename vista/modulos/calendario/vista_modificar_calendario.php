@@ -180,5 +180,9 @@ else
           </section>
         </div>
       </div>
+      <?php
+		require_once("../../partials/footer.php");
+		require_once("../../partials/script.php");
+      ?>
   </body>
 </html>
