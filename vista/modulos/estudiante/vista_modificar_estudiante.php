@@ -33,8 +33,6 @@ if(isset($_FILES['foto']) ? $_FILES['foto']: null){
     $foto = $nombre_archivo;
     $directorio = '../../imagenes/estudiantes/';
     $directorio = $directorio.basename($_FILES['foto']['name']);
-}else{
-	$foto = $foto1;
 }
 //$foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 /*$ruta = $_FILES['foto']['tmp_name'];
@@ -372,9 +370,9 @@ else
 								  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 									<div class="form-group">
 										<label for="foto">Foto Documento</label>
-										<input type="file" name="foto" value="<?php if(isset($foto1)) echo $foto1?>" accept="image/*" class="form-control"> 
+										<input type="file" name="foto" value="<?php if(isset($foto)) echo $foto?>" accept="image/*" class="form-control"> 
 										<?php $directorio = '../../imagenes/estudiantes/'; ?>
-							<?php if($foto1 != '') {?>
+							<?php if($foto != '') {?>
 								<img src="<?php echo $directorio.$v['foto']; ?>" alt="<?php echo $v['foto']; ?>" height="100px" width="140px"  class="img-responsive center-block">
 							<?php } ?>
 									</div>

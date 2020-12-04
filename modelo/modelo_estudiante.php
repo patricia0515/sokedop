@@ -217,8 +217,8 @@
       '".$this->getParentesco_acu()."',
 	  '".$this->getFuncionario()."',
 	  '".$this->getCategoria()."'	  
-	  )";
-	  
+      )";
+      	  
 	  $resultado=$this->conec->query($sql);
     
        if ($resultado)
