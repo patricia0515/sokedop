@@ -165,7 +165,8 @@
 		u.clave_usuario as Clave, 
 		u.mail_usuario as Mail,
 		u.tipo_usuario as Cargo,
-		f.estado as Estado
+        f.estado as Estado,
+        f.tipo_documento as Tipo_doc
 		from funcionario as f
 		inner join usuario as u
 		on f.usuario = u.doc_usuario
