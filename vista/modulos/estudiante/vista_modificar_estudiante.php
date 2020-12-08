@@ -372,9 +372,7 @@ else
 										<label for="foto">Foto Documento</label>
 										<input type="file" name="foto" value="<?php if(isset($foto)) echo $foto?>" accept="image/*" class="form-control"> 
 										<?php $directorio = '../../imagenes/estudiantes/'; ?>
-							<?php if($foto != '') {?>
-								<img src="<?php echo $directorio.$v['foto']; ?>" alt="<?php echo $v['foto']; ?>" height="100px" width="140px"  class="img-responsive center-block">
-							<?php } ?>
+							
 									</div>
 								  </div>
 

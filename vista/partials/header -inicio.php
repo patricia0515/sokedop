@@ -25,7 +25,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
+                  <small class="bg-red">Online</small><small>   Larry Torres</small>
                   <span class="hidden-xs"> <!-- Aqui va la linea de codigo 38 --> <i style="margin-left:5px" class="fa fa-angle-down"></i></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -50,11 +50,7 @@
                     </div>
                     
                     <div class="pull-right">
-<<<<<<< HEAD
-                      <a style="width:80px" data-toggle="modal" href="../../logout.php" class="btn btn-default btn-flat">Salir</a>
-=======
                       <a style="width:80px" data-toggle="modal" href="../../../index.html" class="btn btn-default btn-flat">Salir</a>
->>>>>>> cc86e7dfea55d2da25598392aa422ed86a6d6cf6
                     </div>
                   </li>
                 </ul>
